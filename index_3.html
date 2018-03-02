@@ -1,0 +1,137 @@
+<html>
+<head>
+  <!-- config prebid dimulai-->
+  <!-- pastikan ini dimasukan sebelum tag GPT kamu-->
+  <script> 
+    // menentukan pengaturan timeout prebid, contoh: 700 Second
+    var PREBID_TIMEOUT = 700;
+
+    // menentukan adunit dan menambahkan partner bidder baru, publisher bisa melakukan perubahan di sini
+    // contoh: menggunakan partner bidder "Appnexus" dengan beberapa slot iklan dengan ukuran (300x250, 300x600, 728x90, 970x90).
+    var adUnits = [{
+        code: 'div-gpt-ad-1460505748561-0', /* kode gpt ads slot */
+        mediaTypes: { /* menentukan ukuran ads yang akan digunakan */
+            banner: { /* contoh ukuran yang digunakan */
+                sizes: [[300, 250], [300,600]]
+            }
+        },
+        bids: [{
+            bidder: 'appnexus', /* menentukan nama partner bidder */
+            params: {
+               placementId: '10433394' /* nomor ID placemenet partner bidder */
+            }
+        }]
+    },
+    {
+        code: 'div-gpt-ad-1460505661639-0',
+        mediaTypes: {
+            banner: {
+                sizes: [[728, 90], [970, 90]]
+            }
+        },
+        bids: [{
+            bidder: 'appnexus',
+            params: {
+               placementId: '10433394'
+            }
+        }]
+    }];
+    
+    var pbjs = pbjs || {};
+    pbjs.que = pbjs.que || [];
+
+  </script>
+  <!-- kofigurasi prebid berakhir -->
+  
+  <!-- bagian prebid boilerplate dimulai. tidak diperlu di edit. -->
+  <!-- prebid js bisa di download di situs: prebidjs.org -->
+  <script type="text/javascript" src="//acdn.adnxs.com/prebid/not-for-prod/1/prebid.js" async></script>
+  <script>
+    /* ini adalah script slot iklan dari tag google DFP*/
+    var googletag = googletag || {};
+    googletag.cmd = googletag.cmd || [];
+    
+    googletag.cmd.push(function() { /* googletag command */
+        // perintah disable initialLoad
+        // GPT instant load : fungsinya mengurangi latensi
+        googletag.pubads().disableInitialLoad();
+    });
+
+    /* perintah untuk meminta bid*/
+    pbjs.que.push(function() {
+        pbjs.addAdUnits(adUnits);
+        pbjs.requestBids({
+            /* panggil kembali yang akan men trigger ketika semua bid kembali diminta adunits */
+            bidsBackHandler: sendAdserverRequest
+        });
+    });
+
+    /* perintah minta kirim ke adserver */
+    function sendAdserverRequest() {
+        if (pbjs.adserverRequestSent) return;
+        pbjs.adserverRequestSent = true;
+        googletag.cmd.push(function() {
+            pbjs.que.push(function() {
+                pbjs.setTargetingForGPTAsync();
+                googletag.pubads().refresh();
+                console.log(pbjs);
+            });
+        });
+    }
+
+    /* memanggil perintah jika waktu habis*/
+    setTimeout(function() {
+        sendAdserverRequest();
+    }, PREBID_TIMEOUT);
+        console.log(PREBID_TIMEOUT);
+
+
+  </script>
+  <!-- bagian akhir prebid boilerplate -->
+
+  <script>
+    (function () {
+        var gads = document.createElement('script');
+        console.log(gads);
+        gads.async = true;
+        gads.type = 'text/javascript';
+        var useSSL = 'https:' == document.location.protocol;
+        gads.src = (useSSL ? 'https:' : 'http:') +
+                '//www.googletagservices.com/tag/js/gpt.js';
+        var node = document.getElementsByTagName('script')[0];
+        console.log(node);
+        node.parentNode.insertBefore(gads, node);
+    })();
+  </script>
+
+  <script>
+    /* definisikan slot iklan*/
+    googletag.cmd.push(function () {
+        /* definisikan slot iklan pertama */
+        googletag.defineSlot('/19968336/header-bid-tag-0', [[300, 250], [300, 600]], 'div-gpt-ad-1460505748561-0').addService(googletag.pubads());
+        /* definisikan slot iklan kedua */
+        googletag.defineSlot('/19968336/header-bid-tag1', [[728, 90], [970, 90]], 'div-gpt-ad-1460505661639-0').addService(googletag.pubads());
+        /* mengaktifkan kembali single request */
+        googletag.pubads().enableSingleRequest();
+        googletag.enableServices();
+    });
+  </script>
+</head>
+
+<body>
+<h2>Prebid JS Section 1</h2>
+<div id='div-gpt-ad-1460505748561-0'>
+    <script type='text/javascript'>
+        googletag.cmd.push(function() { googletag.display('div-gpt-ad-1460505748561-0'); });
+    </script>
+</div>
+
+<h2>Prebid JS Section 2</h2>
+<div id='div-gpt-ad-1460505661639-0'>
+    <script type='text/javascript'>
+        googletag.cmd.push(function() { googletag.display('div-gpt-ad-1460505661639-0'); });
+    </script>
+</div>
+
+</body>
+</html>
