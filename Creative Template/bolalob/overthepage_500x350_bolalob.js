@@ -23,6 +23,10 @@ document.addEventListener('readystatechange', function () {
             transform: translate(-50%,-50%);\
             -ms-transform: translate(-50%,-50%);\
         }\
+        .image-ads img {\
+            max-width: 100%;\
+            max-height: 100%;\
+        }\
         .close-overlay img{\
             position: absolute;\
             right: -11px;\
