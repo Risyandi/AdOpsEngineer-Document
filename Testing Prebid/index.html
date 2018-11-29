@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title> Test Page | Header Bidding</title>
+	<script src="./prebid.js" async></script>
+	<script type="text/javascript">
+	/*1*/	var PREBID_TIMEOUT = 700;  
+
+	/*2*/	var adUnits = [{
+			code: 'bolalob_dev_lb', //div-gpt-ad-1519715790572-0 
+			mediaTypes: { 
+				banner: { 
+					sizes: [[320, 50], [468, 60], [728, 90], [1, 1]]
+				}
+			},
+			bids: [{
+				bidder: 'audienceNetwork', 
+				params: {
+					placementId: '207995792968314_207995812968312'
+					}
+				}]
+			}];
+			console.log(adUnits, "test adUnits"); //test
+
+	/*3*/	(function () {
+				var gads = document.createElement('script');
+				gads.async = true;
+				gads.type = 'text/javascript';
+				var useSSL = 'https:' == document.location.protocol;
+				gads.src = (useSSL ? 'https:' : 'http:') + '//www.googletagservices.com/tag/js/gpt.js';
+				var node = document.getElementsByTagName('script')[0];
+				node.parentNode.insertBefore(gads, node);
+				console.log(gads, "test gads"); //test
+				console.log(node, "test node"); //test
+			})();
+
+	/*4*/	var googletag = googletag || {};
+				googletag.cmd = googletag.cmd || [];
+				googletag.cmd.push(function() { 
+				googletag.pubads().disableInitialLoad();
+				console.log(googletag, "test googletag"); //test
+			});
+
+	/*5*/	googletag.cmd.push(function() {
+				googletag.defineSlot('/118200697/Bolalob/bolalob_dev_lb', [[320, 50], [468, 60], [728, 90], [1, 1]], 'div-gpt-ad-1519715790572-0').addService(googletag.pubads());
+				googletag.pubads().enableSingleRequest();
+				googletag.pubads().collapseEmptyDivs();
+				googletag.enableServices();
+			});
+
+	/*6*/	var sendAdserverRequest = function () {
+				if (pbjs.adserverRequestSent) return;
+				pbjs.adserverRequestSent = true;
+				googletag.cmd.push(function() {
+					pbjs.que.push(function() {
+						pbjs.setTargetingForGPTAsync();
+						googletag.pubads().refresh();
+					});
+				});
+			};
+
+	/*7*/	setTimeout(function() {
+				sendAdserverRequest();
+			}, PREBID_TIMEOUT);
+
+			var pbjs = pbjs || {};
+		    pbjs.que = pbjs.que || []; 
+
+
+	/*8*/	pbjs.bidderSettings = {
+		          audienceNetwork: {
+		            adserverTargeting: [
+		                  {
+		                      key: "fb_bidid",
+		                      val: function (bidResponse) {
+		                          // make the bidId available for targeting if required
+		                          return bidResponse.fbBidId;
+		                      } 
+		                  },
+		                  {   
+		                      key: "hb_bidder",
+		                      val: function (bidResponse) {
+		                          return bidResponse.bidderCode;
+		                      }
+		                  },
+		                  {
+		                    key: "hb_pb",  
+		                    val: function(bidResponse) {
+		                      return bidResponse.pbMg;
+		                    }
+		                  },
+		              ],
+		          },
+		      };
+
+	/*9*/   pbjs.que.push(function() {
+		        pbjs.addAdUnits(adUnits);
+		        pbjs.requestBids({
+		            bidsBackHandler: sendAdserverRequest
+		        });
+		    });
+
+	</script>
+</head>
+<body>
+	<style type="text/css">
+		.adv-test{
+			display: block;
+			text-align: center;
+			margin: auto;
+			padding: 10px;
+		}	
+	</style>
+	<div class="adv-test">
+		<h2>Test Prebid | Audience Networks</h2>
+		<div id="div-gpt-ad-1519715790572-0">
+			<script>
+		        googletag.cmd.push(function() {
+		          googletag.display('div-gpt-ad-1519715790572-0');
+		        });
+			</script>
+		</div>
+	</div>
+</body>
+</html>
+
+
+<!-- 
+   * ============ Description
+   * 1. tentukan timeout nya berapa detik
+   * 2. tentukan adunit, size dan prebid untuk partner nya apa
+   * 3. buat function untuk membuat tag script memangggil tags gpt.js
+   * 4. variabel untuk googletag
+   * 5. definisikan adslot yang dipakai
+   * 6. request ke adserver
+   * 7. set timeout prebid 
+   * 8. bidder setting untuk audience network by facebook
+   * 9. set function untuk handle prebid untuk request bid
+-->
