@@ -21,6 +21,7 @@
     <div class="dfp_parallax"></div>
 
     <script type='text/javascript'>
+        // source external link of googletag 
         (function () {
             var useSSL = 'https:' == document.location.protocol;
             var src = (useSSL ? 'https:' : 'http:') +
@@ -30,70 +31,96 @@
     </script>
 
     <script type='text/javascript'>
-        googletag.cmd.push(function () {
-            var Womantalk_Baloon_mapping = googletag.sizeMapping().
-                addSize([800, 600], [1, 1]).
-                addSize([600, 800], [1, 1]).
-                addSize([0, 0], [1, 1]).
-                build();
-            var Womantalk_Popup_Desktop_mapping = googletag.sizeMapping().
-                addSize([800, 600], [1, 1]).
-                addSize([0, 0], []).
-                build();
-            var Womantalk_Popup_Mobile_mapping = googletag.sizeMapping().
-                addSize([800, 600], []).
-                addSize([0, 0], [1, 1]).
-                build();
-            var Womantalk_Leaderboard_mapping = googletag.sizeMapping().
-                addSize([800, 600], [728, 90]).
-                addSize([0, 0], [[468, 60], [320, 50], [300, 100]]).
-                build();
-            var Womantalk_Rectangle_mapping = googletag.sizeMapping().
-                addSize([800, 600], [300, 250]).
-                addSize([0, 0], [300, 250]).
-                build();
+        // define command googletag
+        window.googletag = window.googletag || {};
+        googletag.cmd = googletag.cmd || [];
 
-            $('.dfp_leaderboard').each(function (indexDefAds) {
-                console.log(indexDefAds, "mapping leaderboard");
-                
-                googletag.defineSlot('/118200697/Womantalk/WT_Homepage_Leaderboard', [[300, 100], [320, 50], [468, 60], [728, 90]], 'WT_Homepage_Leaderboard_' + indexDefAds + '').defineSizeMapping(Womantalk_Leaderboard_mapping).addService(googletag.pubads());
+        // check API googletag
+        if (window.googletag && googletag.apiReady) {
+
+            // test for checking looping of elements
+            $('.dfp_leaderboard').each(function (i, val) {
+                if ($(this).html <= 1) {
+                    console.log(i, val)
+                }
             });
 
-            $('.dfp_rectangle').each(function (indexDefAds) {
-                console.log(indexDefAds, "mapping rectangle");
-                
-                googletag.defineSlot('/118200697/Womantalk/WT_Homepage_Rectangle1', [[300, 250]], 'WT_Homepage_Rectangle1_' + indexDefAds + '').defineSizeMapping(Womantalk_Rectangle_mapping).addService(googletag.pubads());
-            });
+            // command push googletag
+            googletag.cmd.push(function () {
 
-            $('.dfp_parallax').each(function (indexDefAds) {
-                console.log(indexDefAds, "mapping parallax");
-                
-                googletag.defineOutOfPageSlot('/118200697/GVM_Staging/SEAMLESS', 'WT_Parallax_Mobile_' + indexDefAds + '')
-                    .defineSizeMapping(Womantalk_Popup_Mobile_mapping)
-                    .addService(googletag.pubads());
+                // define ads mapping
+                var Womantalk_Baloon_mapping = googletag.sizeMapping().
+                    addSize([800, 600], [1, 1]).
+                    addSize([600, 800], [1, 1]).
+                    addSize([0, 0], [1, 1]).
+                    build();
+                var Womantalk_Popup_Desktop_mapping = googletag.sizeMapping().
+                    addSize([800, 600], [1, 1]).
+                    addSize([0, 0], []).
+                    build();
+                var Womantalk_Popup_Mobile_mapping = googletag.sizeMapping().
+                    addSize([800, 600], []).
+                    addSize([0, 0], [1, 1]).
+                    build();
+                var Womantalk_Leaderboard_mapping = googletag.sizeMapping().
+                    addSize([800, 600], [728, 90]).
+                    addSize([0, 0], [[468, 60], [320, 50], [300, 100]]).
+                    build();
+                var Womantalk_Rectangle_mapping = googletag.sizeMapping().
+                    addSize([800, 600], [300, 250]).
+                    addSize([0, 0], [300, 250]).
+                    build();
 
-                googletag.defineOutOfPageSlot('/118200697/GVM_Staging/PELL_ADS', 'WT_Parallax_Desktop_' + indexDefAds + '')
+                // define ads slot
+                $('.dfp_leaderboard').each(function (indexDefAds) {
+                    console.log(indexDefAds, "mapping leaderboard");
+
+                    googletag.defineSlot('/118200697/Womantalk/WT_Homepage_Leaderboard', [[300, 100], [320, 50], [468, 60], [728, 90]], 'WT_Homepage_Leaderboard_' + indexDefAds + '').defineSizeMapping(Womantalk_Leaderboard_mapping)
+                        .addService(googletag.pubads());
+                });
+
+                $('.dfp_rectangle').each(function (indexDefAds) {
+                    console.log(indexDefAds, "mapping rectangle");
+
+                    googletag.defineSlot('/118200697/Womantalk/WT_Homepage_Rectangle1', [[300, 250]], 'WT_Homepage_Rectangle1_' + indexDefAds + '')
+                        .defineSizeMapping(Womantalk_Rectangle_mapping)
+                        .addService(googletag.pubads());
+                });
+
+                $('.dfp_parallax').each(function (indexDefAds) {
+                    console.log(indexDefAds, "mapping parallax");
+
+                    googletag.defineOutOfPageSlot('/118200697/GVM_Staging/SEAMLESS', 'WT_Parallax_Mobile_' + indexDefAds + '')
+                        .defineSizeMapping(Womantalk_Popup_Mobile_mapping)
+                        .addService(googletag.pubads());
+
+                    googletag.defineOutOfPageSlot('/118200697/GVM_Staging/PELL_ADS', 'WT_Parallax_Desktop_' + indexDefAds + '')
+                        .defineSizeMapping(Womantalk_Popup_Desktop_mapping)
+                        .addService(googletag.pubads());
+
+                });
+
+                googletag.defineSlot('/118200697/Womantalk/WT_Article_Baloon', [1, 1], 'Article_Baloon').defineSizeMapping(Womantalk_Baloon_mapping).addService(googletag.pubads());
+
+                googletag.defineOutOfPageSlot('/118200697/Womantalk/WT_Article_Popup_Desktop', 'WT_Popup_Desktop')
                     .defineSizeMapping(Womantalk_Popup_Desktop_mapping)
                     .addService(googletag.pubads());
+
+                googletag.defineOutOfPageSlot('/118200697/Womantalk/WT_Article_Popup_Mobile', 'WT_Popup_Mobile')
+                    .defineSizeMapping(Womantalk_Popup_Mobile_mapping)
+                    .addService(googletag.pubads());
+                
+                // googletag service
+                googletag.pubads().enableSingleRequest();
+                googletag.pubads().collapseEmptyDivs(true);
+                googletag.enableServices();
             });
 
-            googletag.defineSlot('/118200697/Womantalk/WT_Article_Baloon', [1, 1], 'Article_Baloon').defineSizeMapping(Womantalk_Baloon_mapping).addService(googletag.pubads());
-
-            googletag.defineOutOfPageSlot('/118200697/Womantalk/WT_Article_Popup_Desktop', 'WT_Popup_Desktop')
-                .defineSizeMapping(Womantalk_Popup_Desktop_mapping)
-                .addService(googletag.pubads());
-
-            googletag.defineOutOfPageSlot('/118200697/Womantalk/WT_Article_Popup_Mobile', 'WT_Popup_Mobile')
-                .defineSizeMapping(Womantalk_Popup_Mobile_mapping)
-                .addService(googletag.pubads());
-
-            googletag.pubads().enableSingleRequest();
-            googletag.pubads().collapseEmptyDivs(true);
-            googletag.enableServices();
-        });
+        }
     </script>
 
     <script>
+        // function load element
         function loadAllElementsAds() {
             var appendElementPopupDesktop = ''
             var appendElementPopupMobile = ''
@@ -117,10 +144,12 @@
             appendTextBaloon += "<\/script>"
             appendTextBaloon += "<\/div>"
 
+            // append element when meet jquery class which is same
             $('.dfp_parallax').each(function (indexAds) {
                 if ($(this).html() <= 1) {
-                    var appendElementParallaxMobile = 
-                    "<div class=\"parallax-mobile\" id='WT_Parallax_Mobile_" + indexAds + "' style=\"width: 0px;height: 0px;display: none;\">"
+                    console.log(indexAds, "element parallax");
+                    var appendElementParallaxMobile =
+                        "<div class=\"parallax-mobile\" id='WT_Parallax_Mobile_" + indexAds + "' style=\"width: 0px;height: 0px;display: none;\">"
                     "<script type='text/javascript'>"
                     "googletag.cmd.push(function() { googletag.display('WT_Parallax_Mobile_" + indexAds + "'); });"
                     "<\/script>"
@@ -128,12 +157,12 @@
 
                     $(this).append(appendElementParallaxMobile);
 
-                    var appendElementParallaxDesktop = 
-                    "<div class=\"parallax-desktop\" id='WT_Parallax_Desktop_" + indexAds + "' style=\"width: 0px;height: 0px;display: none;\">"
-                    "<script type='text/javascript'>"
-                    "googletag.cmd.push(function() { googletag.display('WT_Parallax_Desktop_" + indexAds + "'); });"
-                    "<\/script>"
-                    "<\/div>"
+                    var appendElementParallaxDesktop =
+                        "<div class=\"parallax-desktop\" id='WT_Parallax_Desktop_" + indexAds + "' style=\"width: 0px;height: 0px;display: none;\">" +
+                        "<script type='text/javascript'>" +
+                        "googletag.cmd.push(function() { googletag.display('WT_Parallax_Desktop_" + indexAds + "'); });" +
+                        "<\/script>" +
+                        "<\/div>";
 
                     $(this).append(appendElementParallaxDesktop);
                 }
@@ -141,8 +170,9 @@
 
             $('.dfp_rectangle').each(function (indexAds) {
                 if ($(this).html() <= 1) {
+                    console.log(indexAds, "element rectangle");
                     var appendTextRetangle =
-                        "<div id='WT_Homepage_Rectangle1_" + indexAds + "'>" +
+                        "<div id='WT_Homepage_Rectangle1_" + indexAds + "' class='WT_Homepage_Rectangle'>" +
                         "<script type='text/javascript'>" +
                         "googletag.cmd.push(function() { googletag.display('WT_Homepage_Rectangle1_" + indexAds + "'); });" +
                         "<\/script>" +
@@ -152,10 +182,11 @@
                 }
             });
 
-            $('.dfp_leaderboard').each(function (indexAds, items) {
+            $('.dfp_leaderboard').each(function (indexAds) {
                 if ($(this).html() <= 1) {
+                    console.log(indexAds, "element leaderboard");
                     var appendTextLeaderboards =
-                        "<div id='WT_Homepage_Leaderboard_" + indexAds + "'>" +
+                        "<div id='WT_Homepage_Leaderboard_" + indexAds + "' class='WT_Homepage_Leaderboard'>" +
                         "<script type='text/javascript'>" +
                         "googletag.cmd.push(function() { googletag.display('WT_Homepage_Leaderboard_" + indexAds + "'); });" +
                         "<\/script>" +
@@ -165,14 +196,14 @@
                 }
             });
 
-            $(appendElementPopupDesktop).insertAfter('#WT_Homepage_Leaderboard_0');
-            $(appendElementPopupMobile).insertAfter('#WT_Homepage_Leaderboard_0');
-            $(appendTextBaloon).insertAfter('#WT_Popup_Desktop');
+            // $(appendElementPopupDesktop).insertAfter('#WT_Homepage_Leaderboard_0');
+            // $(appendElementPopupMobile).insertAfter('#WT_Homepage_Leaderboard_0');
+            // $(appendTextBaloon).insertAfter('#WT_Popup_Desktop');
         }
-        loadAllElementsAds();
 
+        loadAllElementsAds();
     </script>
-    
+
     <script>
         /*
         *** Noted for your programmers :

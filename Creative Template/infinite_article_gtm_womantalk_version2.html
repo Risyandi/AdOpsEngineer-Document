@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Infinite Test - Womantalk</title>
+</head>
+
+<body>
+
+    <script type="text/javascript">
+        // source external library googletag
+        (function () {
+            var useSSL = 'https:' == document.location.protocol;
+            var src = (useSSL ? 'https:' : 'http:') +
+                '//www.googletagservices.com/tag/js/gpt.js';
+            document.write('<scr' + 'ipt src="' + src + '"></scr' + 'ipt>');
+        })();
+    </script>
+
+    <script type="text/javascript">
+
+        // define command googletag
+        window.googletag = window.googletag || {};
+        googletag.cmd = googletag.cmd || [];
+        console.log(window.googletag, ": debug window googletag", googletag.cmd, ": debug command googletag");
+
+        // adds elements
+        googletag.cmd.push(function () {
+            
+            // googletag service
+            googletag.pubads().enableSingleRequest();
+            googletag.pubads().collapseEmptyDivs(true);
+
+            // disable initial load, we will use refresh() to fetch ads.
+            // calling this function means that display() calls just
+            // register the slot as ready, but do not fetch ads for it.
+            googletag.pubads().disableInitialLoad();
+            googletag.enableServices();
+        });
+
+        // function to generate num id unique
+        var numSlotId = 1;
+        function generateIdSlotName() {
+            var numId = numSlotId++;
+            return 'WT_Homepage_Leaderboard_' + numId;
+        }
+
+        // function to load all elements ads
+        function loadAllElementsAds() {
+            // init of id name
+            var slotIdName = generateIdSlotName();
+
+            // create element foreach meet class leaderboard using jquery
+            // $('.dfp_leaderboard').each(function (indexAds) {
+            //     indexAds = indexAds + 1;
+            //     if ($(this).html() <= 1) {
+            //         console.log(indexAds, "element leaderboard");
+
+            //         var appendTextLeaderboards =
+            //             "<div id='WT_Homepage_Leaderboard_" + indexAds + "'>" +
+            //             "<\/div>";
+            //         // append
+            //         $(this).append(appendTextLeaderboards);
+            //     }
+            // });
+
+            // Create a element div for the slot using native js
+            var slotDiv = document.createElement('div');
+            console.log(slotDiv, "create slot div");
+            slotDiv.id = slotIdName; // Id must be the same as slotName
+
+            var getElm = document.querySelector('div.dfp_leaderboard');
+                getElm.appendChild(slotDiv);
+
+            googletag.cmd.push(function () {
+                var leaderboardSlot = googletag.defineSlot('/118200697/Womantalk/WT_Homepage_Leaderboard', [728, 90], slotIdName).addService(googletag.pubads());
+                console.log(leaderboardSlot, "define leaderboard");
+
+                googletag.display(slotIdName);
+                console.log(slotIdName, ": slot-id");
+                googletag.pubads().refresh([leaderboardSlot]);
+
+                // method for remove slot 
+                // var destroy = googletag.destroySlots([leaderboardSlot]);
+                // console.log(destroy, "destroy");
+
+                // method for disable console
+                // var disableConsole = googletag.disablePublisherConsole();
+                // console.log(disableConsole, "disable console");
+
+                // method for open console
+                // var openConsole = googletag.openConsole(slotIdName);
+                // console.log(openConsole);
+
+                // method for get version of GPT
+                // var getVersion = googletag.getVersion();
+                // console.log(getVersion, ": version GPT");
+                
+            });
+        }
+
+        // call function load all elements ads
+        // loadAllElementsAds();
+
+    </script>
+ 
+    <div class="dfp_leaderboard" id="dfp_leaderboard"></div>
+    <button onclick="loadAllElementsAds()">Lihat Iklan</button>
+
+</body>
+
+</html>
