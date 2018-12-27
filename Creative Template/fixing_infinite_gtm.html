@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
@@ -13,6 +13,13 @@
     <!-- start content -->
     <div class="baloon-ads" id="baloon-ads"></div>
     <div class="baloon-ads" id="baloon-ads"></div>
+    <div class="baloon-ads" id="baloon-ads"></div>
+    <div class="baloon-ads" id="baloon-ads"></div>
+
+
+    <div class="popup-ads" id="popup-ads"></div>
+    <div class="popup-ads" id="popup-ads"></div>
+    <div class="popup-ads" id="popup-ads"></div>
     <div class="popup-ads" id="popup-ads"></div>
     <div class="popup-ads" id="popup-ads"></div>
     
@@ -227,9 +234,9 @@
                                 "<\/script>"+
                                 "<\/div>"; 
 
-            $(appendElementPopupDesktop).insertAfter('.popup-ads');
-            $(appendElementPopupMobile).insertAfter('.popup-ads');
-            $(appendTextBaloon).insertAfter('.baloon-ads');                            
+            $(appendElementPopupDesktop).insertAfter('.popup-ads:first');
+            $(appendElementPopupMobile).insertAfter('.popup-ads:first');
+            $(appendTextBaloon).insertAfter('.baloon-ads:first');                            
         }
         loadElementPartial();
     </script>
