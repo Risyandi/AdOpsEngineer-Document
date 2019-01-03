@@ -21,7 +21,7 @@
     <div class="popup-ads" id="popup-ads"></div>
     <div class="popup-ads" id="popup-ads"></div>
     <div class="popup-ads" id="popup-ads"></div>
-    
+
     <div class="dfp_leaderboard"></div>
     <div class="dfp_leaderboard"></div>
     <div class="dfp_leaderboard"></div>
@@ -31,15 +31,24 @@
     <div class="dfp_rectangle"></div>
     <div class="dfp_rectangle"></div>
     <div class="dfp_parallax"></div>
-    <div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae necessitatibus, sequi deserunt, vel possimus optio culpa quia odit odio itaque at modi eum placeat pariatur! Facilis error cumque ad soluta. Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis temporibus mollitia itaque cum, consequatur, accusamus sit libero nam vel illum quidem adipisci quas repellat eos natus quos esse? Cum, molestias!</div>
+    <div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae necessitatibus, sequi deserunt, vel possimus
+        optio culpa quia odit odio itaque at modi eum placeat pariatur! Facilis error cumque ad soluta. Lorem ipsum
+        dolor sit amet consectetur adipisicing elit. Officiis temporibus mollitia itaque cum, consequatur, accusamus
+        sit libero nam vel illum quidem adipisci quas repellat eos natus quos esse? Cum, molestias!</div>
 
     <div class="dfp_parallax"></div>
-    
-    <div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae necessitatibus, sequi deserunt, vel possimus optio culpa quia odit odio itaque at modi eum placeat pariatur! Facilis error cumque ad soluta. Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis temporibus mollitia itaque cum, consequatur, accusamus sit libero nam vel illum quidem adipisci quas repellat eos natus quos esse? Cum, molestias!</div>
-    
+
+    <div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae necessitatibus, sequi deserunt, vel possimus
+        optio culpa quia odit odio itaque at modi eum placeat pariatur! Facilis error cumque ad soluta. Lorem ipsum
+        dolor sit amet consectetur adipisicing elit. Officiis temporibus mollitia itaque cum, consequatur, accusamus
+        sit libero nam vel illum quidem adipisci quas repellat eos natus quos esse? Cum, molestias!</div>
+
     <div class="dfp_parallax"></div>
-    
-    <div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae necessitatibus, sequi deserunt, vel possimus optio culpa quia odit odio itaque at modi eum placeat pariatur! Facilis error cumque ad soluta. Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis temporibus mollitia itaque cum, consequatur, accusamus sit libero nam vel illum quidem adipisci quas repellat eos natus quos esse? Cum, molestias!</div>
+
+    <div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae necessitatibus, sequi deserunt, vel possimus
+        optio culpa quia odit odio itaque at modi eum placeat pariatur! Facilis error cumque ad soluta. Lorem ipsum
+        dolor sit amet consectetur adipisicing elit. Officiis temporibus mollitia itaque cum, consequatur, accusamus
+        sit libero nam vel illum quidem adipisci quas repellat eos natus quos esse? Cum, molestias!</div>
     <!-- end content -->
 
     <!-- start script -->
@@ -74,7 +83,7 @@
             var Womantalk_Popup_Mobile_mapping = googletag.sizeMapping().
                 addSize([800, 600], []).
                 addSize([0, 0], [1, 1]).
-                build(); 
+                build();
 
             // define slot
             googletag.defineSlot('/118200697/Womantalk/WT_Article_Baloon', [1, 1], 'Article_Baloon').defineSizeMapping(Womantalk_Baloon_mapping).addService(googletag.pubads());
@@ -86,7 +95,7 @@
             googletag.defineOutOfPageSlot('/118200697/Womantalk/WT_Article_Popup_Mobile', 'WT_Popup_Mobile')
                 .defineSizeMapping(Womantalk_Popup_Mobile_mapping)
                 .addService(googletag.pubads());
-          
+
             // googletag service
             googletag.pubads().enableSingleRequest();
             googletag.pubads().collapseEmptyDivs(true);
@@ -205,37 +214,37 @@
                     googletag.pubads().refresh([parallaxMobSlot]);
                 }
             });
-        } 
+        }
         loadAllElementsAds()
 
-  
+
         // create element partial for (baloon and popup)
-        function loadElementPartial(){
+        function loadElementPartial() {
             var appendTextBaloon = '';
             var appendElementPopupDesktop = '';
             var appendElementPopupMobile = '';
 
-            appendElementPopupDesktop = "<div class=\"overlay-desktop\" id='WT_Popup_Desktop' style=\"width: 0px;height: 0px;display: none;\">"+
-                                        "<script type='text/javascript'>"+
-                                        "googletag.cmd.push(function() { googletag.display('WT_Popup_Desktop'); });"+
-                                        "<\/script>"+
-                                        "<\/div>";
+            appendElementPopupDesktop = "<div class=\"overlay-desktop\" id='WT_Popup_Desktop' style=\"width: 0px;height: 0px;display: none;\">" +
+                "<script type='text/javascript'>" +
+                "googletag.cmd.push(function() { googletag.display('WT_Popup_Desktop'); });" +
+                "<\/script>" +
+                "<\/div>";
 
-            appendElementPopupMobile = "<div class=\"overlay-mobile\" id='WT_Popup_Mobile' style=\"width: 0px;height: 0px;display: none;\">"+
-                                        "<script type='text/javascript'>"+
-                                        "googletag.cmd.push(function() { googletag.display('WT_Popup_Mobile'); });"+
-                                        "<\/script>"+
-                                        "<\/div>"; 
-                
-            appendTextBaloon = "<div id='Article_Baloon' style=\"height: 1px; width: 1px;\">"+
-                                "<script type='text/javascript'>"+
-                                "googletag.cmd.push(function() { googletag.display('Article_Baloon'); });"+
-                                "<\/script>"+
-                                "<\/div>"; 
+            appendElementPopupMobile = "<div class=\"overlay-mobile\" id='WT_Popup_Mobile' style=\"width: 0px;height: 0px;display: none;\">" +
+                "<script type='text/javascript'>" +
+                "googletag.cmd.push(function() { googletag.display('WT_Popup_Mobile'); });" +
+                "<\/script>" +
+                "<\/div>";
+
+            appendTextBaloon = "<div id='Article_Baloon' style=\"height: 1px; width: 1px;\">" +
+                "<script type='text/javascript'>" +
+                "googletag.cmd.push(function() { googletag.display('Article_Baloon'); });" +
+                "<\/script>" +
+                "<\/div>";
 
             $(appendElementPopupDesktop).insertAfter('.popup-ads:first');
             $(appendElementPopupMobile).insertAfter('.popup-ads:first');
-            $(appendTextBaloon).insertAfter('.baloon-ads:first');                        
+            $(appendTextBaloon).insertAfter('.baloon-ads:first');
         }
         loadElementPartial();
     </script>
