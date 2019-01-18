@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <script>var googletag = window.googletag || { cmd: [] };</script>
+    <script async src="//www.googletagservices.com/tag/js/gpt.js"></script>
+    <script>
+        googletag.cmd.push(function () {
+            var REFRESH_KEY = 'refresh';
+            var REFRESH_VALUE = 'true';
+            // This slot is allowed to refresh, as it contains the targeting keys which have
+            // been declared for refresh.
+            googletag.defineSlot('1234/sports', [300, 600], 'div-1').
+                setTargeting(REFRESH_KEY, REFRESH_VALUE).
+                addService(googletag.pubads());
+            // Number of seconds to wait after the slot becomes viewable.
+            var SECONDS_TO_WAIT_AFTER_VIEWABILITY = 60;
+
+            googletag.pubads().addEventListener('impressionViewable', function (event) {
+                var slot = event.slot;
+                if (slot.getTargeting(REFRESH_KEY).indexOf(REFRESH_VALUE) > -1) {
+                    setTimeout(function () {
+                        googletag.pubads().refresh([slot]);
+                    }, SECONDS_TO_WAIT_AFTER_VIEWABILITY * 1000);
+                }
+            });
+
+            googletag.enableServices();
+        });
+    </script>
+
+</head>
+
+<body>
+    <div id="div-1">
+        <script>
+            googletag.cmd.push(function () { googletag.display('div-1'); });
+        </script>
+    </div>
+</body>
+
+</html>
+<!--
+    Reload ads without a page refresh
+-->

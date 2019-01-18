@@ -1,0 +1,11 @@
+.adsParallax {
+    height: 50px;
+    width: 320px;
+}
+
+#fixedBackground {
+	position: fixed;
+	width: 100%;
+	background: url('https://tpc.googlesyndication.com/pagead/imgad?id=CICAgKCb4pbu4AEQARgBMgjJNxt9zMZ8yw') no-repeat;
+	background-size: cover;
+}

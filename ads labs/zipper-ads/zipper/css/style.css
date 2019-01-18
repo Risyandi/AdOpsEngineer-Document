@@ -1,0 +1,50 @@
+* {
+  user-drag: none;
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-drag: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+}
+
+body {
+  margin: 0;
+  overflow: hidden;
+  /* background-color: white; */
+  background-color: transparent;
+  touch-action: none;
+}
+
+.section {
+  /* background-color: #00d4aa; */
+  background-image: url(../images/advertising-zipper.png);
+  background-position: center;
+  background-size: cover;
+}
+
+#bg-mask,
+#bg-mask-2 {
+  fill: white;
+  /* fill: transparent; */
+}
+
+#zipper {
+  width: 100vw;
+  height: auto;
+  display: block;
+}
+
+#gear-left {
+  transform-origin: left center;
+  transform-box: fill-box;
+}
+
+#slider {
+  cursor: grab;
+  cursor: -webkit-grab;
+  cursor: -webkit-grabbing;
+}
+
+#slider:active {
+  cursor: grabbing;
+}

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Bottom Frame | Bolalob.com</title>
+    <style>
+        .area-bottomFrame-desk {
+            width: 100%;
+            bottom: 0px;
+            left: 0px;
+            text-align: center;
+            position: fixed;
+            z-index: 99999;
+            /*background: #f5f5f5;*/
+        }
+
+        .image-bottomFrame-desk {
+            margin: auto;
+            width: 738px;
+            height: 90px;
+        }
+
+        .close-bottomFrame-desk {
+            position: absolute;
+            bottom: 86px;
+            cursor: pointer;
+            margin: auto;
+            /*right: 0px;*/
+            /*margin-left: 288px;*/
+        }
+
+        .close-bottomFrame-desk img {
+            background: #f5f5f5;
+            padding: 6px 6px 6px 6px;
+            border-top-left-radius: 12px;
+            border-top-right-radius: 12px;
+        }
+
+        .button-close {
+            width: 20px;
+        }
+        
+        .animated {
+            -webkit-animation-duration: 0.2s;
+            animation-duration: 0.2s;
+            -webkit-animation-fill-mode: both;
+            animation-fill-mode: both;
+        }
+
+        .fadeInUp {
+        -webkit-animation-name: fadeInUp;
+        animation-name: fadeInUp;
+        }
+
+        @-webkit-keyframes fadeInUp {
+        from {
+            opacity: 0;
+            -webkit-transform: translate3d(0, 100%, 0);
+            transform: translate3d(0, 100%, 0);
+        }
+
+        to {
+            opacity: 1;
+            -webkit-transform: translate3d(0, 0, 0);
+            transform: translate3d(0, 0, 0);
+        }
+        }
+
+        @keyframes fadeInUp {
+        from {
+            opacity: 0;
+            -webkit-transform: translate3d(0, 100%, 0);
+            transform: translate3d(0, 100%, 0);
+        }
+
+        to {
+            opacity: 1;
+            -webkit-transform: translate3d(0, 0, 0);
+            transform: translate3d(0, 0, 0);
+        }
+        }
+    </style>
+</head>
+<body>
+
+   <div id="area-bottomFrame-desk" class="area-bottomFrame-desk fadeInUp animated">
+        <div class="image-bottomFrame-desk" id="image-bottomFrame-desk">
+            <div class="close-bottomFrame-desk" id="close-bottomFrame-desk"  onclick="offBottomFrame()">
+                <img class="button-close" src="../Overlay_Bolalob/close-button.png" alt="button-close">
+            </div>
+            <a href="#" target="_blank">
+                <img src="image-test-bottomframe-border-desktop2.png" alt="image-bottomFrame">
+            </a>
+        </div>
+   </div>
+
+   <script>
+   function offBottomFrame() {
+       document.getElementById("area-bottomFrame-desk").style.display = "none";
+       console.log("hide bottom frame desktop");
+       
+   }
+   </script>
+
+</body>
+</html>

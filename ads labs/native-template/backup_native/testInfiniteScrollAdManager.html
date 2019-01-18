@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body>div {
+            margin-bottom: 1em;
+            border: solid 1px black;
+            width: 728px
+        }
+
+        body>img {
+            margin-bottom: 1em;
+            display: block
+        }
+
+        body>button {
+            position: fixed;
+            bottom: 10px;
+        }
+    </style>
+    <title>Test Infinite Scroll</title>
+    <script async src="https://www.googletagservices.com/tag/js/gpt.js"></script>
+    <script>
+        var googletag = googletag || {};
+        googletag.cmd = googletag.cmd || [];
+        var adslot;
+
+        googletag.cmd.push(function () {
+            // Declare any slots initially present on the page
+            adslot = googletag.defineSlot('/6355419/Travel', [728, 90], 'leaderboard').
+                setTargeting("test", "infinitescroll").
+                addService(googletag.pubads());
+            // Infinite scroll requires SRA
+            googletag.pubads().enableSingleRequest();
+            // Disable initial load, we will use refresh() to fetch ads.
+            // Calling this function means that display() calls just
+            // register the slot as ready, but do not fetch ads for it.
+            googletag.pubads().disableInitialLoad();
+            // Enable services
+            googletag.enableServices();
+        });
+    </script>
+</head>
+
+<body>
+    <h1>GPT Test Page - Infinite Scroll</h1>
+    </text>
+    <!-- First ad -->
+    <div id="leaderboard">
+        <script>
+            // Call display() to register the slot as ready
+            // and refresh() to fetch an ad.
+            googletag.cmd.push(function () {
+                googletag.display('leaderboard');
+                googletag.pubads().refresh([adslot]);
+            });
+        </script>
+    </div>
+    <!-- More initial fake content -->
+    <text>
+        <h2> Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere nisi corrupti, veritatis voluptatem doloribus quis,
+            vero nihil dolores quod provident aliquid quae libero natus, ut laboriosam iure suscipit quasi eos. </h2>
+        <h2> Lorem, ipsum dolor sit amet consectetur adipisicing elit. Neque esse enim nam voluptas, eos provident corporis placeat
+            atque, nihil ad quam rem aliquam! Quo pariatur quia eaque debitis expedita cumque. </h2>
+    </text>
+
+    <!-- Button to load more content dynamically. -->
+    <button class="more" id="more">More Content</button>
+
+    <script>
+        // Function to generate unique names for slots
+        document.getElementById('more').addEventListener("click", moreContent);
+
+        var nextSlotId = 1;
+        function generateNextSlotName() {
+            var id = nextSlotId++;
+            return 'adslot' + id;
+        }
+
+        // Function to add content to page, mimics real infinite scroll
+        // but keeps it much simpler from a code perspective.
+        function moreContent() {
+            // Generate next slot name
+            var slotName = generateNextSlotName();
+            console.log(slotName,"cek");
+            
+            // Create a div for the slot
+            var slotDiv = document.createElement('div');
+            slotDiv.className = slotName;
+            slotDiv.id = slotName; // Id must be the same as slotName
+            document.body.appendChild(slotDiv);
+            // Create and add fake content 1
+            var h1 = document.createElement("H2")
+            var text1 = document.createTextNode("Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere nisi corrupti, veritatis voluptatem doloribus quis, vero nihil dolores quod provident aliquid quae libero natus, ut laboriosam iure suscipit quasi eos.");
+            h1.appendChild(text1);
+            document.body.appendChild(h1);
+            // Create and add fake content 2
+            var h2 = document.createElement("H2")
+            var text2 = document.createTextNode("Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere nisi corrupti, veritatis voluptatem doloribus quis, vero nihil dolores quod provident aliquid quae libero natus, ut laboriosam iure suscipit quasi eos.");
+            h2.appendChild(text2);
+            document.body.appendChild(h2);
+            // Define the slot itself, call display() to 
+            // register the div and refresh() to fetch ad.
+            googletag.cmd.push(function () {
+                var slot = googletag.defineSlot('/6355419/Travel', [728, 90], slotName).
+                setTargeting("test", "infinitescroll").
+                addService(googletag.pubads());
+                // Display has to be called before
+                // refresh and after the slot div is in the page.
+                googletag.display(slotName);
+                googletag.pubads().refresh([slot]);
+            });
+        }
+    </script>
+</body>
+
+</html>

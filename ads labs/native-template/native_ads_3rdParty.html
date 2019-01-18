@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Testing Native Ads</title>
+</head>
+<body>
+    <div class="native-ads" id="native-ads">
+        <!-- this trigger for output appear -->
+    </div>
+    </body>
+    <script type="text/javascript">
+        var tagsScript = '<script type=\"text\/javascript\" src=\"https:\/\/js.genieessp.com\/t\/291\/197\/a1291197.js\"><\/script>';
+        var nativeAdsElementTemplate = parent.document.createElement('div');
+        nativeAdsElementTemplate.innerHTML = tagsScript;
+        nativeAdsElementTemplate.setAttribute('class', 'area-native-ads');
+        nativeAdsElementTemplate.setAttribute('id', 'area-native-ads');
+        parent.document.querySelector('div#native-ads').parentNode.insertBefore(nativeAdsElementTemplate, parent.document.querySelector('div#native-ads'));
+    </script>
+    
+</html>

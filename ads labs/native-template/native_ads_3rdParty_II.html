@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Native Ads Test II | GVM Networks</title>
+</head>
+<body>
+    <div class="nativeAds" id="nativeAds"></div>
+
+    <script type="text/javascript">
+    // testing 1
+    // =============================
+    // var IframeTagsScript = '\
+    //     <iframe frameborder="0" scrolling="no" height="100%" width="100%">\
+    //             <script type="text/javascript" src="https://js.genieessp.com/t/291/197/a1291197.js"><\/script>\
+    //     </iframe>';
+    // var nativeAdsElementTemplate = parent.document.createElement('div');
+    // nativeAdsElementTemplate.innerHTML = IframeTagsScript;
+    // var test = nativeAdsElementTemplate;
+    // console.log(test, "success create element");
+    // parent.document.querySelector('div#nativeAds').parentNode.insertBefore(nativeAdsElementTemplate, parent.document.querySelector('div#nativeAds'));
+
+
+    // testing 2
+    // =============================
+    // var tagsScript = '<scr'+'ipt type="text/javascript" src="https://js.genieessp.com/t/291/197/a1291197.js"></scr'+'ipt>';
+    // var nativeAdsElementTemplate = parent.document.createElement('iframe');
+    //     // nativeAdsElementTemplate.innerHTML = tagsScript;
+    //     nativeAdsElementTemplate.setAttribute('frameborder', '0');
+    //     nativeAdsElementTemplate.setAttribute('scrolling', 'no');
+    //     nativeAdsElementTemplate.setAttribute('width', '100%');
+    //     nativeAdsElementTemplate.setAttribute('height', '100%');
+    //     nativeAdsElementTemplate.setAttribute('id', 'view');
+
+    // var test = nativeAdsElementTemplate;
+    // console.log(test, "success create native");
+
+    // parent.document.querySelector('div#nativeAds').parentNode.insertBefore(nativeAdsElementTemplate, parent.document.querySelector('div#nativeAds'));
+
+    // var getIframe = document.getElementById("view");
+    // console.log(getIframe, "testing");
+    // var viewIframe = getIframe.contentDocument || getIframe.contentWindow.document;
+    // viewIframe.open();
+    // viewIframe.write(tagsScript);
+    // viewIframe.close();
+
+
+    // testing with text
+    // ===========================
+    // var H = '<html><body><h1 id="hh">This H1 not supposed to show</h1>';
+    // H += '<h1 id="kk">This H1 supposed to show</h1>';
+    // H += '<scr' + 'ipt src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></scr' + 'ipt>';
+    // H += '<scr' + 'ipt>$(document).ready(function() {';
+    // H += '$("#hh").hide();';
+    // H += '});</scr' + 'ipt>';
+    // H += '</body></html>';
+    // var previewFrame = document.getElementById("text");
+    // var preview =  previewFrame.contentDocument ||  previewFrame.contentWindow.document;
+    // preview.open();
+    // preview.write(H);
+    // preview.close();
+
+
+    // testing failed 
+    // ============================
+    // var tagsScript = `%%CLICK_URL_UNESC%%[%TagsScript%]<img src="%%VIEW_URL_UNESC%%" style="display:none">`;
+    // var nativeAdsElementTemplate = parent.document.createElement('iframe');
+    // nativeAdsElementTemplate.innerHTML = tagsScript;
+    
+    // var test = nativeAdsElementTemplate;
+    // console.log(test, "success create native");
+    
+    // nativeAdsElementTemplate.setAttribute('frameborder', '0');
+    // nativeAdsElementTemplate.setAttribute('scrolling', 'no');
+    // nativeAdsElementTemplate.setAttribute('width', '300px');
+    // nativeAdsElementTemplate.setAttribute('height', '55px');
+    // parent.document.querySelector('div#nativeAds').parentNode.insertBefore(nativeAdsElementTemplate, parent.document.querySelector('div#nativeAds'));
+
+
+    // testing 3 (currently)
+    // ============================
+	var tagsScript = '<scr'+'ipt type="text/javascript" src="https://js.genieessp.com/t/291/197/a1291197.js"></scr'+'ipt>';
+    var nativeAdsElementTemplate = parent.document.createElement('iframe');
+        nativeAdsElementTemplate.setAttribute('frameborder', '0');
+        nativeAdsElementTemplate.setAttribute('scrolling', 'no');
+        nativeAdsElementTemplate.setAttribute('width', '100%');
+        nativeAdsElementTemplate.setAttribute('height', '100%');
+        nativeAdsElementTemplate.setAttribute('id', 'nativeAdsIframe');
+        nativeAdsElementTemplate.setAttribute('name', 'nativeAdsIframe');
+    //  nativeAdsElementTemplate.setAttribute('onload', 'injectJs()');
+
+    parent.document.querySelector('div#nativeAds').parentNode.insertBefore(nativeAdsElementTemplate, parent.document.querySelector('div#nativeAds'));
+
+    // function injectJs() {    
+    window.onload = function injectJs() {
+        console.log("call function");
+    	var iframeHead = parent.window.frames["nativeAdsIframe"].document.getElementsByTagName("head")[0];
+        var iframeBody = parent.window.frames["nativeAdsIframe"].document.getElementsByTagName("body")[0];
+    	var scriptJs = document.createElement('script');
+    	scriptJs.type = 'text/javascript';
+    	scriptJs.src = '%%CLICK_URL_UNESC%%[%linksource%]';
+    	iframeHead.appendChild(scriptJs);
+
+    	var scriptImg = document.createElement('img');
+    	scriptImg.src = '%%VIEW_URL_UNESC%%';
+    	scriptImg.style = 'display:none';
+    	iframeBody.appendChild(scriptImg);
+    }
+    </script>
+</body>
+</html>

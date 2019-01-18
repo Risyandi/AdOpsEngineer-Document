@@ -1,0 +1,43 @@
+<script type="text/javascript">
+// Native template without tags background color yellow
+// var nativeTemplate = '\
+//     <div>\
+//         <div class="img pull-left">\
+//             <a target="_blank" href="%%CLICK_URL_UNESC%%[%LandingPage%]">\
+//             <img class="lazy" src="[%ImageNative%]" data-original="[%ImageNative%]" style="display:inline">\
+//             </a>\
+//         </div>\
+//         <div class="pull-right">\
+//             <div class="date-title"></div>\
+//             <div class="list-subtitle"><a>Advertisiment</a></div>\
+//             <a class="list-title" target="_blank" href="%%CLICK_URL_UNESC%%[%LandingPage%]">[%TitleNative%]</a>\
+//             <div class="list-body">[%DescriptionNative%]</div>\
+//         </div>\
+//         <div class="clearfix"></div>\
+//         <img src="%%VIEW_URL_UNESC%%" style="display:none">\
+//     </div>';
+
+var nativeTemplate = '\
+<div>\
+    <div class="img pull-left">\
+        <a target="_blank" href="%%CLICK_URL_UNESC%%[%LandingPage%]">\
+        <img class="lazy" data-original="[%ImageNative%]" src="[%ImageNative%]" style="display:inline">\
+    </a>\
+    </div>\
+    <div class="pull-right">\
+        <div class="date-title">\
+        <div class="text-10 text-upper sponsored">Advertisement</div>\
+        </div>\
+        <a class="list-title" target="_blank" href="%%CLICK_URL_UNESC%%[%LandingPage%]">[%TitleNative%]</a>\
+        <div class="list-body">[%DescriptionNative%]</div>\
+    </div>\
+    <div class="clearfix"></div>\
+    <img src="%%VIEW_URL_UNESC%%" style="display:none">\
+</div>';
+
+    var nativeElementTemplate = parent.document.createElement('div');
+        nativeElementTemplate.innerHTML = nativeTemplate;
+        nativeElementTemplate.setAttribute('class','content odd');
+        parent.document.querySelector('div#nativeAds').parentNode.insertBefore(nativeElementTemplate, parent.document.querySelector('div#nativeAds'));
+        console.log("draw native ads");
+</script>
