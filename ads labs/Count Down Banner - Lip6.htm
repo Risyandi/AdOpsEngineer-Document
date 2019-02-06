@@ -1,0 +1,127 @@
+<html class="gr__liputan6_com"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><style>
+    @font-face {
+        font-family: "Gotham";
+        src: url('https://cdn-a.production.liputan6.static6.com/assets/fonts/bola/Gotham-Bold/Gotham-Bold.eot');
+        src: url('https://cdn-a.production.liputan6.static6.com/assets/fonts/bola/Gotham-Bold/Gotham-Bold.eot?#iefix') format('embedded-opentype'),
+        url('https://cdn-a.production.liputan6.static6.com/assets/fonts/bola/Gotham-Bold/Gotham-Bold.svg#Gotham Bold') format('svg'),
+        url('https://cdn-a.production.liputan6.static6.com/assets/fonts/bola/Gotham-Bold/Gotham-Bold.woff') format('woff'),
+        url('https://cdn-a.production.liputan6.static6.com/assets/fonts/bola/Gotham-Bold/Gotham-Bold.ttf') format('truetype');
+        font-style: normal;
+        font-weight: 700;
+    }
+    body {
+        margin: 0;
+    }
+
+    #clockdiv {
+        background-image: url("http://preview.kmkonline.co.id/liputan6/countdown/liputan6-2x.png");
+        font-family: 'Gotham';
+        background-repeat: no-repeat;
+        background-size: 648px 90px;
+        width: 648px;
+        height: 90px;
+        color: #fff;
+        display: inline-block;
+        font-weight: 100;
+        font-size: 30px;
+        text-align: right;
+        font-weight: bold;
+    }
+
+    #clockdiv>div {
+        border-radius: 3px;
+        display: inline-block;
+        text-align: center;
+    }
+
+    #clockdiv>div:last-child {
+        margin-right: 113px;
+    }
+
+    #clockdiv div>span {
+        margin-top: 18px;
+        width: 70px;
+        font-size: 24px;
+        border-radius: 19px;
+        padding: 7px 0 5px;
+        display: inline-block;
+        color: #29396c;
+    }
+
+    .days-margin {
+        margin-right: 3px;
+    }
+
+    .smalltext {
+        display: none;
+        padding-top: 5px;
+        font-size: 14px;
+        text-transform: uppercase;
+    }
+</style>
+
+</head><body data-gr-c-s-loaded="true"><div id="clockdiv">
+    <div>
+        <span class="days days-margin">159</span>
+        <div class="smalltext">Hari</div>
+    </div>
+    <div>
+        <span class="hours">15</span>
+        <div class="smalltext">Jam</div>
+    </div>
+    <div>
+        <span class="minutes">48</span>
+        <div class="smalltext">Menit</div>
+    </div>
+    <div>
+        <span class="seconds">57</span>
+        <div class="smalltext">Detik</div>
+    </div>
+</div>
+
+<script>
+    function getTimeRemaining(endtime) {
+        var t = Date.parse(endtime) - Date.parse(new Date());
+        var seconds = Math.floor((t / 1000) % 60);
+        var minutes = Math.floor((t / 1000 / 60) % 60);
+        var hours = Math.floor((t / (1000 * 60 * 60)) % 24);
+        var days = Math.floor(t / (1000 * 60 * 60 * 24));
+        return {
+            'total': t,
+            'days': days,
+            'hours': hours,
+            'minutes': minutes,
+            'seconds': seconds
+        };
+    }
+
+    function initializeClock(id, endtime) {
+        var clock = document.getElementById(id);
+        var daysSpan = clock.querySelector('.days');
+        var hoursSpan = clock.querySelector('.hours');
+        var minutesSpan = clock.querySelector('.minutes');
+        var secondsSpan = clock.querySelector('.seconds');
+
+        function updateClock() {
+            var t = getTimeRemaining(endtime);
+
+            daysSpan.innerHTML = t.days;
+            hoursSpan.innerHTML = ('0' + t.hours).slice(-2);
+            minutesSpan.innerHTML = ('0' + t.minutes).slice(-2);
+            secondsSpan.innerHTML = ('0' + t.seconds).slice(-2);
+
+            if (t.total <= 0) {
+                clearInterval(timeinterval);
+            }
+        }
+
+        updateClock();
+        var timeinterval = setInterval(updateClock, 1000);
+    }
+
+    var deadline = new Date("2018/8/18");
+    initializeClock('clockdiv', deadline);
+</script>
+<script id="wappalyzer" src="chrome-extension://gppongmhjkpfnbhagpmjfkannfbllamg/js/inject.js"></script>
+</body>
+</html>

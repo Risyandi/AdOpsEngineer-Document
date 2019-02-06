@@ -16,35 +16,51 @@ $(function() {
     console.log(pt, "cek position svg point");
 
   var sTop = 0;
-    console.log(sTop, "cek sTop");
+  console.log(sTop, "cek sTop");
+  
+  var sDown = 0;
     
   var sOffset = 0;
-    console.log(sOffset, "cek sOffset");
+  console.log(sOffset, "cek sOffset");
+  
+  var sOnset = 0;
     
   var slider = document.getElementById("slider");
     console.log(slider, "get area id slider");
     
+  /**
+   * Explaining about method 
+   * ClientX : is get the horizontal coordinate
+   * ClientY : is get the vertical coordinate
+   */
+
+  // events mouse down on area id:slider
   $("#slider").mousedown(function(e) {
     mDown = true;
-    // ClientX is get the horizontal coordinate
-    // ClientY is get the vertical coordinate
     sOffset = e.clientY + sTop;
     // console.log(sOffset, "cek sOffset value");
-    // console.log("mouse down");
   });
 
-  $("#slider").mouseup(function() {
+  // events mouse up on area id:slider
+  $("#slider").mouseup(function(e) {
     mDown = false;
-    console.log("mouse up");
+    sOnset = e.clientX + sDown;
+    // console.log(sOnset, "cek sOnset value");
   });
 
+  // events mouse move on area id:slider
   $("#slider").mousemove(function(e) {
     console.log(mDown, "cek val mDown");
+    
     if (mDown) {
-      sTop = Math.min(
+       sTop = Math.min(
        Math.max(e.clientY - sOffset, 0),
        $("#zipper").height() - $("#slider")[0].getBoundingClientRect().height
       );
+
+      var cekMax = Math.max(e.clientY - sOffset, 0);
+      console.log(cekMax, "cek max");
+      
 
       var cekH = $("#zipper").height();
       console.log(cekH, "cek height");
