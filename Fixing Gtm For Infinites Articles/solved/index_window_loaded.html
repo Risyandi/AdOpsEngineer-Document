@@ -102,7 +102,34 @@
                 googletag.pubads().refresh([rectangleSlot]);
             }
         });
-      
+
+       // create element foreach meet class mobile rectangle
+       $('.article-action').each(function () {
+            if ($(this).children().length <= 2) {
+
+                // define ads mapping
+                var Womantalk_Rectangle_mob_mapping = googletag.sizeMapping().
+                addSize([0, 0], [300, 250]).
+                build();
+
+                var slotId = generateIdSlot();
+				console.log(slotId, "element rectangle mobile");
+              
+                var appendTextRectangle =
+                    "<div id='WT_Homepage_Rectangle1_mob" + slotId + "' style='padding-top:35px; text-align:center;'>" +
+                    "<\/div>";
+				console.log("changes style");
+                $('.article-action').css("margin-bottom", 0);
+				// append element
+                $(this).append(appendTextRectangle);
+
+                var rectangleSlot = googletag.defineSlot('/118200697/Womantalk/WT_Homepage_Rectangle1', [[300, 250]], 'WT_Homepage_Rectangle1_mob'+ slotId + '').defineSizeMapping(Womantalk_Rectangle_mob_mapping).addService(googletag.pubads());
+
+                googletag.display('WT_Homepage_Rectangle1_mob' + slotId + '');
+                googletag.pubads().refresh([rectangleSlot]);
+            }
+        });
+
                 // create element foreach meet class parallax
         $('.dfp_parallax:first').each(function () {
             if ($(this).html() <= 1) {
@@ -147,6 +174,8 @@
         });
     } 
   
+
+
    // create element partial for (baloon and popup)
     function loadElementPartial(){
         var appendTextBaloon = '';
