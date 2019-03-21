@@ -1,4 +1,6 @@
 <script type="text/javascript">
+    /* created by risyandi 2018 */ 
+
     // define command googletag
     window.googletag = window.googletag || {};
     googletag.cmd = googletag.cmd || [];
@@ -77,6 +79,12 @@
             }
         });
 
+        // backup testing for leaderboard without div element on html
+        $('').each(function () {
+            
+        });
+
+
          // create element foreach meet class rectangle
         $('.dfp_rectangle').each(function () {
             if ($(this).html() <= 1) {
@@ -102,6 +110,35 @@
                 googletag.pubads().refresh([rectangleSlot]);
             }
         });
+
+        // backup testing for rectangle without div element on html
+        // $('.article-related-side-container').each(function () {
+        //     console.log($(this), ":get class success");
+        //     console.log($(this).children().length, ":value of length");
+        //     if ($(this).children().length <= 3) {
+            
+        //     // define ads mapping
+        //     var Womantalk_Rectangle_mapping = googletag.sizeMapping().
+        //         addSize([800, 600], [300, 250]).
+        //         addSize([0, 0], [300, 250]).
+        //         build();
+                
+        //         var slotId = generateIdSlot();
+
+        //         var appendTextRectangle =
+        //             "<div id='WT_Homepage_Rectangle1_" + slotId + "'>" +
+        //             "<\/div>";
+
+        //         // append element
+        //         $(this).append(appendTextRectangle);
+
+        //         var rectangleSlot = googletag.defineSlot('/118200697/Womantalk/WT_Homepage_Rectangle1', [[300, 250]], 'WT_Homepage_Rectangle1_'+ slotId + '').defineSizeMapping(Womantalk_Rectangle_mapping).addService(googletag.pubads());
+
+        //         googletag.display('WT_Homepage_Rectangle1_' + slotId + '');
+        //         googletag.pubads().refresh([rectangleSlot]);
+
+        //     }
+        // });
 
        // create element foreach meet class mobile rectangle
        $('.article-action').each(function () {
