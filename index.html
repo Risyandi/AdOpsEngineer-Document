@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script type='text/javascript'>
+        // init tags admanager
+        (function () {
+            var useSSL = 'https:' == document.location.protocol;
+            var src = (useSSL ? 'https:' : 'http:') +
+                '//www.googletagservices.com/tag/js/gpt.js';
+            document.write('<scr' + 'ipt src="' + src + '"></scr' + 'ipt>');
+        })();
+    </script>
+    <script type='text/javascript'>
+        googletag.cmd.push(function () {
+            //   admanager mapping
+            var Historia_Parallax_Desktop_mapping = googletag.sizeMapping().
+                addSize([800, 600], [1, 1]).
+                addSize([0, 0], []).
+                build();
+            var Historia_Parallax_Mobile_mapping = googletag.sizeMapping().
+                addSize([800, 600], []).
+                addSize([0, 0], [1, 1]).
+                build();
+            var Historia_Leaderboard_mapping = googletag.sizeMapping().
+                addSize([980, 0], [728, 90]).
+                addSize([640, 0], [468, 60]).
+                addSize([0, 0], [320, 50]).
+                build();
+            var Historia_Rectangle1_mapping = googletag.sizeMapping().
+                addSize([0, 0], [300, 250]).
+                build();
+            var Historia_Baloon_mapping = googletag.sizeMapping().
+                addSize([800, 600], [1, 1]).
+                addSize([600, 800], [1, 1]).
+                addSize([0, 0], [1, 1]).
+                build();
+
+            // admanager define slot 
+            googletag.defineOutOfPageSlot('/118200697/Historia/Parallax/Parallax_Mobile', 'Parallax-Mobile').defineSizeMapping(Historia_Parallax_Mobile_mapping).addService(googletag.pubads());
+            googletag.defineOutOfPageSlot('/118200697/Historia/Parallax/Parallax_Desktop', 'Parallax-Desktop').defineSizeMapping(Historia_Parallax_Desktop_mapping).addService(googletag.pubads());
+            googletag.defineSlot('/118200697/Historia/Leaderboard', [[728, 90], [300, 50], [970, 90], [320, 50], [468, 60], [300, 100]], 'Leaderboard').defineSizeMapping(Historia_Leaderboard_mapping).addService(googletag.pubads());
+            googletag.defineSlot('/118200697/Historia/Rectangle1', [[300, 250]], 'Rectangle1').defineSizeMapping(Historia_Rectangle1_mapping).addService(googletag.pubads());
+            googletag.defineSlot('/118200697/Historia/Baloon', [1, 1], 'Baloon').defineSizeMapping(Historia_Baloon_mapping).addService(googletag.pubads());
+
+            googletag.pubads().enableSingleRequest();
+            googletag.pubads().collapseEmptyDivs(true);
+            googletag.enableServices();
+        });
+
+        var appendTextParallaxMob = "<div id='Parallax-Mobile' class='parallax-mobile' >" +
+            "<script>googletag.cmd.push(function() { googletag.display(\'Parallax-Mobile\');});<\/script>" +
+            "<\/div>";
+        var appendTextParallaxDesk = "<div id='Parallax-Desktop' class='parallax-desktop' >" +
+            "<script>googletag.cmd.push(function() { googletag.display(\'Parallax-Desktop\');});<\/script>" +
+            "<\/div>";
+
+        // append element
+        var numMiddle = Math.ceil($(".setpage p").length / 2);
+        $(".setpage p:nth-child(" + numMiddle + ")").append(appendTextParallaxMob);
+        $(".setpage p:nth-child(" + numMiddle + ")").append(appendTextParallaxDesk);
+
+        var apt = '<script>googletag.cmd.push(function() { googletag.display(\'Leaderboard\');});<\/script>';
+        $('#Leaderboard').append(apt);
+        apt = '<script>googletag.cmd.push(function() { googletag.display(\'Rectangle1\'); });<\/script>';
+        $('#Rectangle1').append(apt);
+        apt = '<script>googletag.cmd.push(function() { googletag.display(\'Baloon\');});<\/script>';
+        $('#Baloon').append(apt);
+    </script>
+</body>
+
+</html>
