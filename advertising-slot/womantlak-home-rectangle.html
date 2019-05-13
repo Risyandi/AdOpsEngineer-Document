@@ -1,0 +1,39 @@
+<script>
+    function elementRectangleHomepage() {
+        // define mapping
+        var Womantalk_Rectangle_desktop_mapping = googletag.sizeMapping().
+            addSize([800, 600], [300, 250]).
+            addSize([0, 0], []).
+            build();
+        var Womantalk_Rectangle_mobile_mapping = googletag.sizeMapping().
+            addSize([800, 600], []).
+            addSize([0, 0], [[300, 250],[300, 600]]).
+            build();
+
+        // element ads
+        var appendTextRectangleDesktop = "<div id='WT_Homepage_Rectangle_desktop' style='text-align:center; padding:19.5px 0;'></div>";
+            $(appendTextRectangleDesktop).insertAfter('.expert-section:first');
+        
+        var appendTextRectangleMobile = "<div id='WT_Homepage_Rectangle_mobile' style='text-align:center;'></div>";
+            $(appendTextRectangleMobile).insertAfter($(".homepage-section")[4]);
+        var appendTextRectangleMobile2 = "<div id='WT_Homepage_Rectangle_mobile_2' style='text-align:center;'></div>";
+            $(appendTextRectangleMobile2).insertAfter($(".homepage-section")[9]);
+
+        // define slot
+        var rectangleSlotDesktop = googletag.defineSlot('/118200697/Womantalk/WT_Homepage_Rectangle1', [300, 250], 'WT_Homepage_Rectangle_desktop').defineSizeMapping(Womantalk_Rectangle_desktop_mapping).addService(googletag.pubads());
+
+        var rectangleSlotMobile1 = googletag.defineSlot('/118200697/Womantalk/WT_Homepage_Rectangle1', [[300, 250], [300, 600]], 'WT_Homepage_Rectangle_mobile').defineSizeMapping(Womantalk_Rectangle_mobile_mapping).addService(googletag.pubads());
+        var rectangleSlotMobile2 = googletag.defineSlot('/118200697/Womantalk/WT_Homepage_Rectangle1', [[300, 250], [300, 600]], 'WT_Homepage_Rectangle_mobile_2').defineSizeMapping(Womantalk_Rectangle_mobile_mapping).addService(googletag.pubads());
+
+        googletag.display('WT_Homepage_Rectangle_desktop');
+        googletag.display('WT_Homepage_Rectangle_mobile');
+        googletag.display('WT_Homepage_Rectangle_mobile_2');
+        googletag.pubads().refresh([rectangleSlotDesktop, rectangleSlotMobile1, rectangleSlotMobile2]);
+    }
+
+    if (window.googletag && googletag.apiReady) {
+        googletag.cmd.push(function () {
+            elementRectangleHomepage();
+        });
+    }
+</script>

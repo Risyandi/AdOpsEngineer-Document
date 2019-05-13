@@ -1,4 +1,3 @@
-<!-- Library GPT -->
 <script type='text/javascript'>
     (function () {
         var useSSL = 'https:' == document.location.protocol;
@@ -7,8 +6,7 @@
         document.write('<scr' + 'ipt src="' + src + '"></scr' + 'ipt>');
     })();
 </script>
-
-<!-- Start Lotame Audience Keyvalues -->
+<!-- Lotame Audience Keyvalues -->
 <script type="text/javascript">
     var dartCCKey = "aud_wt_test";
     var dartCC = "";
@@ -18,12 +16,10 @@
             dartCC += ccauds.Profile.Audiences.Audience[cci].abbr;
         }
     }
-    googletag.cmd.push(function () {
-        googletag.pubads().setTargeting(dartCCKey, [dartCC]);
-    });
+googletag.cmd.push(function() {
+googletag.pubads().setTargeting(dartCCKey, [dartCC]);
+  });
 </script>
-<!-- End Lotame Audience Keyvalues -->
-
 <script type="text/javascript">
     // define command googletag
     window.googletag = window.googletag || {};
@@ -50,7 +46,7 @@
     // function to load all elements ads event infinites
     function loadAllElementsAds() {
             // create element foreach meet class leaderboard
-            $('.dfp_leaderboard').each(function () {
+            $('.wrapper-article .gallery-body').each(function () {
                 if ($(this).html() <= 1) {
 
                     // define ads mapping
@@ -173,7 +169,7 @@
         } 
   
    // create element partial for (baloon and popup)
-    function loadElementPartial(){
+    function loadElementCustom(){
           // define mapping
         var Womantalk_Baloon_mapping = googletag.sizeMapping().
             addSize([800, 600], [1, 1]).
@@ -190,19 +186,16 @@
             build(); 
 
         // define element
-        var appendElementPopupDesktop = "<div class='overlay-desktop' id='WT_Popup_Desktop' style='width: 0px;height: 0px;display: none;'>" +
-            "<\/div>";
-        var appendElementPopupMobile = "<div class='overlay-mobile' id='WT_Popup_Mobile' style='width: 0px;height: 0px;display: none;'>" +
-            "<\/div>";
-        var appendTextBaloon = "<div id='Article_Baloon' style='height: 1px; width: 1px;'>" +
-            "<\/div>"; 
+        var appendElementPopupDesktop = "<div class='overlay-desktop' id='WT_Popup_Desktop' style='width:0px; height:0px; display:none;'></div>";
+        var appendElementPopupMobile = "<div class='overlay-mobile' id='WT_Popup_Mobile' style='width:0px; height:0px; display:none;'></div>";
+        var appendTextBaloon = "<div id='WT_Article_Baloon' style='height:1px; width:1px;'></div>"; 
 
         $(appendElementPopupDesktop).insertAfter('.dfp_leaderboard:first');
         $(appendElementPopupMobile).insertAfter('.dfp_leaderboard:first');
         $(appendTextBaloon).insertAfter('.dfp_rectangle:first');                            
         
         // define slot
-        var baloonSlot = googletag.defineSlot('/118200697/Womantalk/WT_Article_Baloon', [1, 1], 'Article_Baloon')
+        var baloonSlot = googletag.defineSlot('/118200697/Womantalk/WT_Article_Baloon', [1, 1], 'WT_Article_Baloon')
             .defineSizeMapping(Womantalk_Baloon_mapping)
             .addService(googletag.pubads());
         var popupDesktopSlot = googletag.defineOutOfPageSlot('/118200697/Womantalk/WT_Article_Popup_Desktop', 'WT_Popup_Desktop')
@@ -214,12 +207,12 @@
 
         googletag.display('WT_Popup_Desktop');
         googletag.display('WT_Popup_Mobile');
-        googletag.display('Article_Baloon');
+        googletag.display('WT_Article_Baloon');
         googletag.pubads().refresh([baloonSlot, popupDesktopSlot, popupMobileSlot]);
     }
 
     // call func loadElementPartial
     googletag.cmd.push(function () {
-        loadElementPartial();
+        loadElementCustom();
     });
 </script>

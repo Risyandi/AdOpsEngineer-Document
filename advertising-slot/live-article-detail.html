@@ -1,0 +1,139 @@
+<script type='text/javascript'>
+    (function () {
+        var useSSL = 'https:' == document.location.protocol;
+        var src = (useSSL ? 'https:' : 'http:') +
+            '//www.googletagservices.com/tag/js/gpt.js';
+        document.write('<scr' + 'ipt src="' + src + '"></scr' + 'ipt>');
+    })();
+</script>
+<!-- Lotame Audience Keyvalues -->
+<script type="text/javascript">
+    var dartCCKey = "aud_wt_test";
+    var dartCC = "";
+    if (typeof (ccauds) != 'undefined') {
+        for (var cci = 0; cci < ccauds.Profile.Audiences.Audience.length; cci++) {
+            if (cci > 0) dartCC += ",";
+            dartCC += ccauds.Profile.Audiences.Audience[cci].abbr;
+        }
+    }
+    googletag.cmd.push(function () {
+        googletag.pubads().setTargeting(dartCCKey, [dartCC]);
+    });
+</script>
+<script type="text/javascript">
+    // define command googletag
+    window.googletag = window.googletag || {};
+    googletag.cmd = googletag.cmd || [];
+    googletag.cmd.push(function () {
+        // googletag service
+        googletag.pubads().enableSingleRequest();
+        googletag.pubads().collapseEmptyDivs(true);
+
+        // disable initial load, we will use refresh() to fetch ads.
+        // calling this function means that display() calls just
+        // register the slot as ready, but do not fetch ads for it.
+        googletag.pubads().disableInitialLoad();
+        googletag.enableServices();
+    });
+
+    function firstLoadElementAds() {
+        // define mapping
+        var Womantalk_Leaderboard_mobile_mapping = googletag.sizeMapping().
+            addSize([800, 600], []).
+            addSize([0, 0], [[468, 60], [320, 50], [300, 100]]).
+            build();
+        var Womantalk_Leaderboard_desktop_mapping = googletag.sizeMapping().
+            addSize([800, 600], [728, 90]).
+            addSize([0, 0], []).
+            build();
+
+        var appendLeaderboardDesktop = "<div id='WT_Homepage_Leaderboard_desktop'style='text-align:center;'></div>";
+        $(appendLeaderboardDesktop).insertBefore($('.wrapper-article.no-padding-bottom.article-body')[0]);
+        $($(".wrapper-article")[0]).css("padding", "0");
+        $($(".main-content-body")[0]).css("margin-top", "150px");
+
+        var appendLeaderboardMobile = "<div id='WT_Homepage_Leaderboard_mobile' style='text-align:center;'></div>";
+        $(appendLeaderboardMobile).insertBefore($('.wrapper-article.no-padding-bottom.article-body')[0]);
+
+        // define slot
+        var leaderboardSlotDesktop = googletag.defineSlot('/118200697/Womantalk/WT_Homepage_Leaderboard', [728, 90], 'WT_Homepage_Leaderboard_desktop').setTargeting('AudienceWomantalk', ['GoodLifestyle']).defineSizeMapping(Womantalk_Leaderboard_desktop_mapping).addService(googletag.pubads());
+
+        var leaderboardSlotMobile = googletag.defineSlot('/118200697/Womantalk/WT_Homepage_Leaderboard', [[468, 60], [320, 50], [300, 100]], 'WT_Homepage_Leaderboard_mobile').setTargeting('AudienceWomantalk', ['GoodLifestyle']).defineSizeMapping(Womantalk_Leaderboard_mobile_mapping).addService(googletag.pubads());
+
+        googletag.display('WT_Homepage_Leaderboard_desktop');
+        googletag.display('WT_Homepage_Leaderboard_mobile');
+        googletag.pubads().refresh([leaderboardSlotDesktop, leaderboardSlotMobile]);
+    }
+
+    // function to generate num id unique
+    var numSlotId = 1;
+    function generateIdSlot() {
+        var numId = numSlotId++;
+        return numId;
+    }
+
+    // function to load all elements ads event infinites
+    function infinitesElementAds() {
+        // create element foreach meet class leaderboard
+        $('.article-related-bottom-container').each(function () {
+            if ($(this).html() <= 1) {
+                // define ads mapping
+                var Womantalk_Leaderboard_mapping = googletag.sizeMapping().
+                    addSize([800, 600], [728, 90]).
+                    addSize([0, 0], [[468, 60], [320, 50], [300, 100]]).
+                    build();
+
+                var slotId = generateIdSlot();
+                var appendTextLeaderboards = "<div id='WT_Homepage_Leaderboard_" + slotId + "' style='text-align:center; padding-top:20px;'></div>";
+
+
+                // append element
+              $(appendTextLeaderboards).insertAfter('.article-related-bottom-container');
+              console.log("print ads leaderboard infinites");
+
+                var leaderboardSlot = googletag.defineSlot('/118200697/Womantalk/WT_Homepage_Leaderboard', [[300, 100], [320, 50], [468, 60], [728, 90]], 'WT_Homepage_Leaderboard_' + slotId + '').setTargeting('AudienceWomantalk', ['GoodLifestyle'])
+                    .defineSizeMapping(Womantalk_Leaderboard_mapping).addService(googletag.pubads());
+
+                googletag.display('WT_Homepage_Leaderboard_' + slotId + '');
+                googletag.pubads().refresh([leaderboardSlot]);
+            }
+        });
+
+        // create element foreach meet class leaderboard
+        $('.dfp_leaderboard').each(function () {
+            if ($(this).html() <= 2) {
+                // define ads mapping
+                var Womantalk_Leaderboard_mapping = googletag.sizeMapping().
+                    addSize([800, 600], [728, 90]).
+                    addSize([0, 0], [[468, 60], [320, 50], [300, 100]]).
+                    build();
+
+                var slotId = generateIdSlot();
+                var appendTextLeaderboards =
+                    "<div id='WT_Homepage_Leaderboard_" + slotId + "'>" +
+                    "<\/div>";
+
+                // append element
+                $(this).append(appendTextLeaderboards);
+
+                var leaderboardSlot = googletag.defineSlot('/118200697/Womantalk/WT_Homepage_Leaderboard', [[300, 100], [320, 50], [468, 60], [728, 90]], 'WT_Homepage_Leaderboard_' + slotId + '').setTargeting('AudienceWomantalk', ['GoodLifestyle'])
+                    .defineSizeMapping(Womantalk_Leaderboard_mapping).addService(googletag.pubads());
+
+                googletag.display('WT_Homepage_Leaderboard_' + slotId + '');
+                googletag.pubads().refresh([leaderboardSlot]);
+            }
+        });
+    }
+
+    // firstload call
+    googletag.cmd.push(function () {
+        firstLoadElementAds();
+    });
+
+    // infinites call
+    if (window.googletag && googletag.apiReady) {
+        googletag.cmd.push(function () {
+            infinitesElementAds();
+        });
+    }
+</script>
