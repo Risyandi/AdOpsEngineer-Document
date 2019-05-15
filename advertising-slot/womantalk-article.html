@@ -57,20 +57,8 @@
             addSize([800, 600], []).
             addSize([0, 0], [[300, 250], [300, 600]]).
             build();
-        var Womantalk_Baloon_mapping = googletag.sizeMapping().
-            addSize([800, 600], [1, 1]).
-            addSize([600, 800], [1, 1]).
-            addSize([0, 0], [1, 1]).
-            build();
-        var Womantalk_Popup_Desktop_mapping = googletag.sizeMapping().
-            addSize([800, 600], [1, 1]).
-            addSize([0, 0], []).
-            build();
-        var Womantalk_Popup_Mobile_mapping = googletag.sizeMapping().
-            addSize([800, 600], []).
-            addSize([0, 0], [1, 1]).
-            build();
-
+    
+      
         var appendTextRectangleDesktop = "<div id='WT_Homepage_Rectangle_desktop' style='text-align:center; padding:45px 0;'></div>";
             $(appendTextRectangleDesktop).insertAfter($('.col-xs-12.col-sm-6.col-md-8.m-bottom-20.text-center')[0]);
         var appendTextRectangleMobile = "<div id='WT_Homepage_Rectangle_mobile' style='text-align:center; padding:45px 0;'></div>";
@@ -85,13 +73,7 @@
             $(appendTextLeaderboardsDesktop).insertAfter('.category-banner:first');
         var appendTextLeaderboardsDesktop2 = "<div id='WT_Homepage_Leaderboard2_desktop' style='text-align:center;'></div>";
             $(appendTextLeaderboardsDesktop2).insertAfter($('.child-container')[2]);
-
-        var appendTextBaloon = "<div id='WT_Article_Baloon' style='height:1px; width:1px;'></div>";
-            $(appendTextBaloon).insertAfter('.child-container:last');
-        var appendPopupDesktop = "<div id='WT_Popup_Desktop' style='width:0px; height:0px; display:none;'></div>";
-            $(appendPopupDesktop).insertAfter('.child-container:last');
-        var appendPopupMobile = "<div id='WT_Popup_Mobile' style='width:0px; height:0px; display:none;'></div>";
-            $(appendPopupMobile).insertAfter('.child-container:last');
+      
 
         // define slot
         var leaderboardSlotMob = googletag.defineSlot('/118200697/Womantalk/WT_Homepage_Leaderboard', [[300, 100], [320, 50], [468, 60], [728, 90]], 'WT_Homepage_Leaderboard_mobile').setTargeting('AudienceWomantalk', ['GoodLifestyle']).defineSizeMapping(Womantalk_Leaderboard_mobile_mapping).addService(googletag.pubads());
@@ -103,27 +85,61 @@
         var rectangleSlotDesktop = googletag.defineSlot('/118200697/Womantalk/WT_Homepage_Rectangle1', [300, 250], 'WT_Homepage_Rectangle_desktop').defineSizeMapping(Womantalk_Rectangle_mapping_desktop).addService(googletag.pubads());
         var rectangleSlotMobile = googletag.defineSlot('/118200697/Womantalk/WT_Homepage_Rectangle1', [[300, 250], [300, 600]], 'WT_Homepage_Rectangle_mobile').defineSizeMapping(Womantalk_Rectangle_mapping_mobile).addService(googletag.pubads());
 
-        var baloonsSlot = googletag.defineSlot('/118200697/Womantalk/WT_Article_Baloon', [1, 1], 'WT_Article_Baloon').defineSizeMapping(Womantalk_Baloon_mapping).addService(googletag.pubads());
-        var popupSlotDesktop = googletag.defineOutOfPageSlot('/118200697/Womantalk/WT_Article_Popup_Desktop', 'WT_Popup_Desktop')
-            .defineSizeMapping(Womantalk_Popup_Desktop_mapping)
-            .addService(googletag.pubads());
-        var popupSlotMobile = googletag.defineOutOfPageSlot('/118200697/Womantalk/WT_Article_Popup_Mobile', 'WT_Popup_Mobile')
-            .defineSizeMapping(Womantalk_Popup_Mobile_mapping)
-            .addService(googletag.pubads());
-
         googletag.display('WT_Homepage_Leaderboard_mobile');
         googletag.display('WT_Homepage_Leaderboard2_mobile');
         googletag.display('WT_Homepage_Leaderboard_desktop');
         googletag.display('WT_Homepage_Leaderboard2_desktop');
         googletag.display('WT_Homepage_Rectangle_desktop');
         googletag.display('WT_Homepage_Rectangle_mobile');
-        googletag.display('WT_Article_Baloon');
-        googletag.display('WT_Popup_Desktop');
-        googletag.display('WT_Popup_Mobile');
-        googletag.pubads().refresh([leaderboardSlotMob, leaderboardSlotMob2, leaderboardSlotDesk, leaderboardSlotDesk2, rectangleSlotDesktop, rectangleSlotMobile, baloonsSlot, popupSlotDesktop, popupSlotMobile]);
+
+        googletag.pubads().refresh([leaderboardSlotMob, leaderboardSlotMob2, leaderboardSlotDesk, leaderboardSlotDesk2, rectangleSlotDesktop, rectangleSlotMobile]);
     }
 
+  
+   function firstElementAds(){
+          // define mapping
+        var Womantalk_Baloon_mapping = googletag.sizeMapping().
+            addSize([800, 600], [1, 1]).
+            addSize([600, 800], [1, 1]).
+            addSize([0, 0], [1, 1]).
+            build();
+        var Womantalk_Popup_Desktop_mapping = googletag.sizeMapping().
+            addSize([800, 600], [1, 1]).
+            addSize([0, 0], []).
+            build();
+        var Womantalk_Popup_Mobile_mapping = googletag.sizeMapping().
+            addSize([800, 600], []).
+            addSize([0, 0], [1, 1]).
+            build(); 
+
+        // define element
+        var appendElementPopupDesktop = "<div class='overlay-desktop' id='WT_Popup_Desktop' style='width: 0px;height: 0px;display: none;'></div>";  
+    	var appendElementPopupMobile = "<div class='overlay-mobile' id='WT_Popup_Mobile' style='width: 0px;height: 0px;display: none;'></div>";
+     	var appendTextBaloon = "<div id='WT_Article_Baloon' style='height: 1px; width: 1px;'></div>";
+
+        $(appendElementPopupDesktop).insertAfter('#WT_Homepage_Leaderboard_desktop:first');
+        $(appendElementPopupMobile).insertAfter('#WT_Homepage_Leaderboard_desktop:first');
+        $(appendTextBaloon).insertAfter('#WT_Homepage_Leaderboard_desktop:first');                            
+        
+        // define slot
+        var baloonSlot = googletag.defineSlot('/118200697/Womantalk/WT_Article_Baloon', [1, 1], 'WT_Article_Baloon')
+            .defineSizeMapping(Womantalk_Baloon_mapping)
+            .addService(googletag.pubads());
+        var popupDesktopSlot = googletag.defineOutOfPageSlot('/118200697/Womantalk/WT_Article_Popup_Desktop', 'WT_Popup_Desktop')
+            .defineSizeMapping(Womantalk_Popup_Desktop_mapping)
+            .addService(googletag.pubads());
+        var popupMobileSlot = googletag.defineOutOfPageSlot('/118200697/Womantalk/WT_Article_Popup_Mobile', 'WT_Popup_Mobile')
+            .defineSizeMapping(Womantalk_Popup_Mobile_mapping)
+            .addService(googletag.pubads());
+
+        googletag.display('WT_Popup_Desktop');
+        googletag.display('WT_Popup_Mobile');
+        googletag.display('WT_Article_Baloon');
+        googletag.pubads().refresh([baloonSlot, popupDesktopSlot, popupMobileSlot]);
+    }
+  
     googletag.cmd.push(function () {
         allElementAds();
+        firstElementAds();
     });
 </script>
