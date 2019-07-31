@@ -9,7 +9,7 @@
 </head>
 
 <body>
-    <script type='text/javascript'>
+    <!-- <script type='text/javascript'>
         // init tags admanager
         (function () {
             var useSSL = 'https:' == document.location.protocol;
@@ -73,7 +73,30 @@
         $('#Rectangle1').append(apt);
         apt = '<script>googletag.cmd.push(function() { googletag.display(\'Baloon\');});<\/script>';
         $('#Baloon').append(apt);
-    </script>
-</body>
+    </script> -->
 
+    <div id="div-outstream-wrapper"></div>
+</body>
+<script>
+	window.impactifyTag = window.impactifyTag || [];
+	impactifyTag.push({
+		appId: 'womantalk.com'
+		,format: 'screen' 
+		,style: 'static'
+		,container: '#div-outstream-wrapper'
+	});
+	(function(d, s, id) {
+        console.log(d, ":value d"); // element
+        console.log(s, ":value s"); // script
+        console.log(id, ":value id"); // impactify-sdk
+        
+		var js, ijs = d.getElementsByTagName(s)[0];
+		if (d.getElementById(id)) return;
+		js = d.createElement(s); js.id = id;
+        console.log(js, ":value js"); 
+        console.log(ijs, ":value ijs"); 
+		js.src = 'https://ad.impactify.io/static/ad/tag.js';
+		ijs.parentNode.insertBefore(js, ijs);
+	}(document, 'script', 'impactify-sdk'));
+</script>
 </html>

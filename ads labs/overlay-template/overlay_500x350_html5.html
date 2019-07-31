@@ -71,6 +71,10 @@
                 opacity: 1;
             }
         }
+
+        body {
+            min-height: 2000px;
+        }
     </style>
 </head>
 <body>
@@ -82,30 +86,53 @@
                 <iframe src="ads-watchdog-500x350.png" frameborder="0" width="500" height="350" scrolling="no"></iframe>
         </div>
     </div>
-    
+
     <!-- function when page loading -->
     <script>
         // start call function onOverlay when onload
-        window.onload = onOverlay;
+        // window.onload = onOverlay;
         
         // function for show overlay
-        function onOverlay() {
+        // function onOverlay() {
             // display banner ads
-            document.getElementById("area-overlay").style.display = "block";
-            console.log("open overlay");
+            // document.getElementById("area-overlay").style.display = "block";
+            // console.log("open overlay");
  
             // set timeout close 
             // setTimeout(function () {
             //     document.getElementById("area-overlay").style.display = "none";
             //     console.log("auto close overlay");
             // }, 5000);
-        }
+        // }
         
         // function for close overlay when you click button close
-        function offOverlay() {
-            document.getElementById("area-overlay").style.display = "none";
-            console.log("clicked close overlay");
-        }
+        // function offOverlay() {
+        //     document.getElementById("area-overlay").style.display = "none";
+        //     console.log("clicked close overlay");
+        // }
+
+        var overlayScript = '\
+        let elemOverlay = document.getElementById("area-overlay");\
+        window.addEventListener("scroll", function () {\
+            if (window.pageYOffset > 1500 && elemOverlay !== null) {\
+                onOverlay();\
+            }\
+        });\
+        function onOverlay() {\
+            if (elemOverlay !== null) {\
+                elemOverlay.style.display = "block";\
+                setTimeout(function () {\
+                    if (elemOverlay !== null) {\
+                        offOverlay();\
+                    }\
+                }, 5000);\
+            }\
+        }\
+        function offOverlay() {\
+            if (elemOverlay.parentNode !== null) {\
+                elemOverlay.parentNode.removeChild(elemOverlay);\
+            }\
+        }';
     </script>
 </body>
 </html>

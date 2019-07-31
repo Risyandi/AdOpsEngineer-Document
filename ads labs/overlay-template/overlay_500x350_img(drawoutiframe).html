@@ -91,7 +91,8 @@
 
     /* text javascript */
     var overlayScript = '\
-        window.onload = onOverlay;\
+        window.onload = callOverlay; \
+        var callOverlay = setTimeout(function () { onOverlay(); }, 8000);\
         function onOverlay() {\
             document.getElementById("area-overlay").style.display = "block";\
             console.log("open overlay");\
