@@ -91,6 +91,7 @@
 
 <body>
 
+    <!-- element creative -->
     <div id="area-topFrame-mob" class="area-topFrame-mob fadeInUp animated">
         <div class="image-topFrame-mob" id="image-topFrame-mob">
             <div class="close-topFrame" id="close-topFrame" onclick="offTopFrame()">
@@ -102,6 +103,7 @@
         </div>
     </div>
 
+    <!-- example content -->
     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem magnam architecto optio tempora dolor ducimus.
         Maxime pariatur totam hic quasi accusamus itaque harum? Dolor explicabo earum, quis libero eveniet debitis?</p>
     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem magnam architecto optio tempora dolor ducimus.
@@ -135,12 +137,12 @@
     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem magnam architecto optio tempora dolor ducimus.
         Maxime pariatur totam hic quasi accusamus itaque harum? Dolor explicabo earum, quis libero eveniet debitis?</p>
 
-    <script>
+    <script text="text/javascript">
         let targetId = document.getElementById('area-topFrame-mob');
-        let htmlBocy = document.documentElement;
+        let htmlBody = document.documentElement;
 
         window.addEventListener('scroll', function () {
-            if (htmlBocy.scrollTop > 300) {
+            if (htmlBody.scrollTop > 300) {
                 targetId.classList.add('display-sticky');
                 setTimeout(function () {
                     targetId.remove();
