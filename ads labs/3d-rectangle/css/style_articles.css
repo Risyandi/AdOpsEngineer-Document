@@ -1,0 +1,64 @@
+.ad-container {
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    margin: 0 auto;
+    left: 50%;
+    transform: translate(-50%, 0);
+}
+
+.ws-swipe {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    height: 100%;
+    width: 100%;
+}
+
+.swiper-slide img {
+    height: 100px;
+    width: 100%;
+    z-index: 1;
+}
+
+.swiper-slide>.title {
+    font-family: Arial, 'Helvetica', sans-serif;
+    text-transform: capitalize;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.swiper-slide>.description {
+    font-family: Arial, 'Helvetica', sans-serif;
+    font-size: 12px;
+    text-align: justify;
+}
+
+.swiper-slide>.button-lengkap {
+    font-family: Arial, 'Helvetica', sans-serif;
+    font-size: 12px;
+    border-radius: 20px;
+    background: darkcyan;
+    padding: 10px;
+    margin: 0 25% 0 25%;
+    text-align: center;
+    color: white;
+    text-transform: capitalize;
+}
+
+.swiper-slide>.button-lengkap:hover {
+    background: #01a5a5;
+}
+
+.swiper-wrapper {
+    z-index: 1;
+}
+
+#swipeInstructions {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 150px;
+    z-index: 9;
+}
