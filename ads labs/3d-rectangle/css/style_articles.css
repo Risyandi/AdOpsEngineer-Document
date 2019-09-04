@@ -34,7 +34,7 @@
     text-align: justify;
 }
 
-.swiper-slide>.button-lengkap {
+.swiper-slide>a>.button-lengkap {
     font-family: Arial, 'Helvetica', sans-serif;
     font-size: 12px;
     border-radius: 20px;
@@ -48,6 +48,11 @@
 
 .swiper-slide>.button-lengkap:hover {
     background: #01a5a5;
+}
+
+.swiper-slide>a {
+    text-decoration: none;
+    color: white;
 }
 
 .swiper-wrapper {
