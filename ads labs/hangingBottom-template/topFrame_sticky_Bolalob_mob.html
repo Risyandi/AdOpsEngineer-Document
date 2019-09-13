@@ -87,6 +87,17 @@
             }
         }
     </style>
+    <!-- admanager -->
+    <script async src="https://securepubads.g.doubleclick.net/tag/js/gpt.js"></script>
+    <script>
+      window.googletag = window.googletag || {cmd: []};
+      googletag.cmd.push(function() {
+        googletag.defineSlot('/118200697/Opini_Desktop/Homepage_Leaderboard', [[320, 50], [300, 100]], 'Sticky').addService(googletag.pubads());
+        googletag.pubads().enableSingleRequest();
+        googletag.pubads().collapseEmptyDivs(true);
+        googletag.enableServices();
+      });
+    </script>
 </head>
 
 <body>
@@ -97,9 +108,14 @@
             <div class="close-topFrame" id="close-topFrame" onclick="offTopFrame()">
                 <img class="button-close" src="../hangingBottom-template/close-button.png" alt="button-close">
             </div>
+            <!-- images 
             <a href="#" target="_blank">
                 <img src="image-test-bottomframe-border.png" alt="image-topFrame">
-            </a>
+            </a> 
+            -->
+
+            <!-- /118200697/Opini_Desktop/Homepage_Sticky -->
+            <div id='Sticky'></div>
         </div>
     </div>
 
@@ -156,6 +172,8 @@
             document.getElementById("area-topFrame-mob").style.display = "none";
         }
 
+        // call display ads
+        googletag.cmd.push(function () { googletag.display('Sticky'); });
     </script>
 
 </body>
