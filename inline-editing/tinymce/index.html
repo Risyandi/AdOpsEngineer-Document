@@ -1,0 +1,788 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="src/styles.css">
+
+    <!-- start library visual multimedia -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700&display=swap" rel="stylesheet">
+    <link href="https://articlephoto.s3-ap-southeast-1.amazonaws.com/visual/kabinetijen/css/kabinetijen_v.css"
+        rel="stylesheet" type="text/css" />
+    <link href="https://articlephoto.s3-ap-southeast-1.amazonaws.com/visual/kabinetijen/css/animation.css"
+        rel="stylesheet" type="text/css" />
+    <!-- end library visual multimedia -->
+
+    <title>Riset Inline Editor | TinyMCE</title>
+</head>
+
+<body>
+    <!-- start example tinyMCE -->
+    <!-- <div class="wrapper-tinymce">
+        <table cellpadding="0" class="demo-inline" style="max-width:650px">
+            <tbody>
+                <tr>
+                    <td class="demo-inline-content" style="padding-bottom: 0">
+                        <img src='https://www.tiny.cloud/images/email-banner-2.png' style="width:650px" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <table>
+                            <tbody>
+                                <tr>
+                                    <td class="demo-inline-content" style="padding-bottom: 10px">
+                                        <h2 class="tinymce-heading">The world’s first rich text editor in the cloud</h2>
+                                        <div class="tinymce-body">
+                                            <p>
+                                                Have you heard about Tiny Cloud?
+                                                It’s the first step in our journey to help you deliver great content
+                                                creation experiences, no matter your level of expertise.
+                                                50,000 developers already agree.
+                                                They get free access to our global CDN, image proxy services and auto
+                                                updates to the TinyMCE editor.
+                                                They’re also ready for some exciting updates coming soon.
+                                            </p>
+                                            <p>
+                                                One of these enhancements is <strong>Tiny Drive</strong>: imagine file
+                                                management for TinyMCE, in the cloud, made super easy.
+                                                Learn more at <a
+                                                    href='https://www.tiny.cloud/tinydrive/'>tiny.cloud/tinydrive</a>,
+                                                where
+                                                you’ll find a working demo and an opportunity to provide feedback to the
+                                                product team.
+                                            </p>
+                                        </div>
+                                    </td>
+                                    <td class="demo-inline-content">
+                                        <img style="width:300px;max-width:300px;"
+                                            src='https://www.tiny.cloud/images/image-two.jpg' />
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="demo-inline-content" style="padding-top: 0">
+                        <h3 class="tinymce-heading">An editor for every project</h3>
+                        <div class="tinymce-body">
+                            <p>
+                                Here are some of our customer’s most common use cases for TinyMCE:
+                            </p>
+                            <ul>
+                                <li>Content Management Systems (<em>e.g. WordPress, Umbraco</em>)</li>
+                                <li>Learning Management Systems (<em>e.g. Blackboard</em>)</li>
+                                <li>Customer Relationship Management and marketing automation (<em>e.g. Marketo</em>)
+                                </li>
+                                <li>Email marketing (<em>e.g. Constant Contact</em>)</li>
+                                <li>Content creation in SaaS systems (<em>e.g. Eventbrite, Evernote, GoFundMe,
+                                        Zendesk</em>)
+                                </li>
+                            </ul>
+
+                            <p>
+                                And those use cases are just the start.
+                                TinyMCE is incredibly flexible, and with hundreds of APIs there’s likely a solution for
+                                your
+                                editor project.
+                                If you haven’t experienced Tiny Cloud, get started today.
+                                You’ll even get a free trial of our premium plugins – no credit card required!
+                            </p>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div> -->
+    <!-- end example tinyMCE -->
+
+    <!-- Start Visual Kabinetijen -->
+    <div id="kv_outer_container" contenteditable="true">
+        <input type="hidden" id="kv_is_login" value="true">
+        <div class="kv_container_outer_black">
+            <div class="kv_arrow_green">
+                <div class="indepth_animate fade-in-i" data-animation="fade-in-i" data-delay="0.8" data-offset="0"
+                    data-flag="1" style="animation-delay: 0.8s;"><img
+                        src="https://d28j15pnfa5oxx.cloudfront.net/visual/kabinetijen/img/arrow_stroke.svg" alt="">
+                </div>
+                <div class="indepth_animate fade-in-i" data-animation="fade-in-i" data-delay="1" data-offset="0"
+                    data-flag="1" style="animation-delay: 1s;"><img
+                        src="https://d28j15pnfa5oxx.cloudfront.net/visual/kabinetijen/img/arrow_stroke.svg" alt="">
+                </div>
+                <div class="indepth_animate fade-in-i" data-animation="fade-in-i" data-delay="1.2" data-offset="0"
+                    data-flag="1" style="animation-delay: 1.2s;"><img
+                        src="https://d28j15pnfa5oxx.cloudfront.net/visual/kabinetijen/img/arrow_stroke.svg" alt="">
+                </div>
+            </div>
+            <div id="kv_cover_container">
+                <div class="indepth_animate swing-in-top-fwd" data-animation="swing-in-top-fwd" data-delay="0"
+                    data-offset="0" data-flag="1"
+                    style="position: absolute; top: -30px; right: 0px; text-align: right; animation-delay: 0s;">
+                    <img style="width:109px;height:111px;"
+                        src="https://d28j15pnfa5oxx.cloudfront.net/visual/kabinetijen/img/logo.png" alt=""></div>
+                <div id="kv_main_title" class="kv_section_title_container" style="float:left;width:auto;">
+                    <div style="color:#fff;">KABINET JUGA</div>
+                    <div style="color:#DF1F26;"><span style="color:#fff!important;">URUSAN</span> WARGA</div>
+                    <div style="color:#DF1F26;">INDONESIA</div>
+                </div>
+                <div id="kv_jokowi_main_image_container">
+                    <div style="display:inline-block;position:relative;">
+                        <div class="kv_jokowi_p">Joko</div>
+                        <div class="kv_jokowi_p2">WIDODO</div>
+                        <div class="kv_jokowi_quote_container">
+                            <div class="kv_jokowi_quote indepth_animate draw-border" data-animation="draw-border"
+                                data-delay="0" data-offset="0" data-flag="1" style="animation-delay: 0s;">
+                                <div id="quote_1" class="kv_jokowi_quote_span kv_quote_show indepth_animate fade-in"
+                                    data-id="quote_1" data-animation="random-fade-text" data-delay="0" data-offset="0"
+                                    data-flag="1"><span class="slide-in-top"
+                                        style="animation-delay: 0.724573s;">USUL</span>
+                                    <span class="slide-in-top" style="animation-delay: 0.593785s;">BOLEH,</span>
+                                    <span class="slide-in-top" style="animation-delay: 1.18824s;">TAPI</span> <span
+                                        class="slide-in-top" style="animation-delay: 0.768858s;">JANGAN</span> <span
+                                        class="slide-in-top" style="animation-delay: 0.842394s;">IKUT</span> <span
+                                        class="slide-in-top" style="animation-delay: 1.33517s;">CAMPUR,</span> <span
+                                        class="slide-in-top" style="animation-delay: 0.614362s;">INI</span> <span
+                                        class="slide-in-top" style="animation-delay: 1.45831s;">HAK</span> <span
+                                        class="slide-in-top" style="animation-delay: 0.799011s;">PREROGATIF</span>
+                                    <span class="slide-in-top" style="animation-delay: 1.26632s;">PRESIDEN.</span>
+                                </div>
+                                <div class="kv_jokowi_quote_by indepth_animate text-focus-in"
+                                    data-animation="text-focus-in" data-delay="0.5" data-offset="100" data-flag="1"
+                                    style="animation-delay: 0.5s;"> <i>Joko
+                                        Widodo - Presiden R.I.</i></div>
+                            </div>
+                        </div> <img src="https://d28j15pnfa5oxx.cloudfront.net/visual/kabinetijen/img/jokowi_quote.jpg"
+                            alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="kv_container_outer_white">
+            <div class="kv_rotating_circle_s indepth_animate rotate-i" data-animation="rotate-i" data-delay="0"
+                data-offset="0" data-flag="1" style="animation-delay: 0s;"> <img
+                    src="https://d28j15pnfa5oxx.cloudfront.net/visual/kabinetijen/img/circles_stroke.svg" alt="">
+            </div>
+            <div class="kv_star">
+                <div class="indepth_animate puff-in-center" data-animation="puff-in-center" data-delay="0.4"
+                    data-offset="0" data-flag="1" style="animation-delay: 0.4s;"><img
+                        src="https://d28j15pnfa5oxx.cloudfront.net/visual/kabinetijen/img/star_fill.svg" alt="">
+                </div>
+                <div class="indepth_animate puff-in-center" data-animation="puff-in-center" data-delay="0.3"
+                    data-offset="0" data-flag="1" style="animation-delay: 0.3s;"><img
+                        src="https://d28j15pnfa5oxx.cloudfront.net/visual/kabinetijen/img/star_fill.svg" alt="">
+                </div>
+                <div class="indepth_animate puff-in-center" data-animation="puff-in-center" data-delay="0.2"
+                    data-offset="0" data-flag="1" style="animation-delay: 0.2s;"><img
+                        src="https://d28j15pnfa5oxx.cloudfront.net/visual/kabinetijen/img/star_stroke.svg" alt="">
+                </div>
+                <div class="indepth_animate puff-in-center" data-animation="puff-in-center" data-delay="0.1"
+                    data-offset="0" data-flag="1" style="animation-delay: 0.1s;"><img
+                        src="https://d28j15pnfa5oxx.cloudfront.net/visual/kabinetijen/img/star_stroke.svg" alt="">
+                </div>
+                <div class="indepth_animate puff-in-center" data-animation="puff-in-center" data-delay="0"
+                    data-offset="0" data-flag="1" style="animation-delay: 0s;"><img
+                        src="https://d28j15pnfa5oxx.cloudfront.net/visual/kabinetijen/img/star_stroke.svg" alt="">
+                </div>
+            </div>
+            <div class="kv_arrow_red">
+                <div class="indepth_animate fade-in-i" data-animation="fade-in-i" data-delay="0" data-offset="20"
+                    data-flag="1" style="animation-delay: 0s;"><img
+                        src="https://d28j15pnfa5oxx.cloudfront.net/visual/kabinetijen/img/arrow_fill.svg" alt="">
+                </div>
+                <div class="indepth_animate fade-in-i" data-animation="fade-in-i" data-delay="0.2" data-offset="40"
+                    data-flag="1" style="animation-delay: 0.2s;"><img
+                        src="https://d28j15pnfa5oxx.cloudfront.net/visual/kabinetijen/img/arrow_fill.svg" alt="">
+                </div>
+                <div class="indepth_animate fade-in-i" data-animation="fade-in-i" data-delay="0.4" data-offset="60"
+                    data-flag="1" style="animation-delay: 0.4s;"><img
+                        src="https://d28j15pnfa5oxx.cloudfront.net/visual/kabinetijen/img/arrow_fill.svg" alt="">
+                </div>
+            </div>
+            <div class="kv_content_text_white">
+                <div class="kv_label">
+                    <div class="kv_label_span indepth_animate swing-in-top-fwd" data-animation="swing-in-top-fwd"
+                        data-delay="0" data-offset="0" data-flag="1" style="animation-delay: 0s;">Sebelum dilantik
+                        pada 20
+                        Oktober 2019 mendatang,</div>
+                </div>
+                <div class="kv_label">
+                    <div class="kv_label_span indepth_animate swing-in-top-fwd" data-animation="swing-in-top-fwd"
+                        data-delay="0.2" data-offset="0" data-flag="1" style="animation-delay: 0.2s;">banyak orang
+                        yang
+                        mempertanyakan seputar</div>
+                </div>
+                <div class="kv_label">
+                    <div class="kv_label_span indepth_animate swing-in-top-fwd" data-animation="swing-in-top-fwd"
+                        data-delay="0.4" data-offset="0" data-flag="1" style="animation-delay: 0.4s;">susunan
+                        kabinet Joko
+                        Widodo.</div>
+                </div> <br> Dari media sampai masyarakat sampai penasaran kira-kira susunan kabinet baru periode
+                2019-2024
+                siapa saja. Merasa bosan dan capek dengan pertanyaan tersebut, akhirnya mantan Walikota Solo ini pun
+                angkat
+                bicara dan mengatakan,” usul boleh. Tapi jangan ikut campur, ini hak prerogatif presiden,” tegasnya
+                beberapa
+                waktu lalu di Istana Negara Dalam Peresmian Pembukaan Konferensi Hukum Tata Negara ke-6 Tahun 2019.
+                <br><br>
+                Bicara soal kabinet, Indonesia sendiri punya cerita panjang loh. Kabinet Pemerintahan Indonesia
+                adalah dewan
+                menteri yang ditunjuk oleh presiden. Indonesia sudah mengalami pergantian puluhan kabinet sejak
+                proklamasi
+                kemerdekaan RI tahun 1945. Mulai dari era Sukarno, Soeharto, BJ Habibie, Gusdur, Megawati, SBY,
+                sampai
+                Jokowi.
+            </div>
+            <div class="kv_kabinet_history_container">
+                <div class="kv_arrow_red2" style="top:-65px!important;">
+                    <div class="indepth_animate fade-in-i" data-animation="fade-in-i" data-delay="0" data-offset="0"
+                        data-flag="1" style="animation-delay: 0s;"><img
+                            src="https://d28j15pnfa5oxx.cloudfront.net/visual/kabinetijen/img/arrow_fill.svg" alt="">
+                    </div>
+                    <div class="indepth_animate fade-in-i" data-animation="fade-in-i" data-delay="0.2" data-offset="20"
+                        data-flag="1" style="animation-delay: 0.2s;"><img
+                            src="https://d28j15pnfa5oxx.cloudfront.net/visual/kabinetijen/img/arrow_fill.svg" alt="">
+                    </div>
+                    <div class="indepth_animate fade-in-i" data-animation="fade-in-i" data-delay="0.4" data-offset="60"
+                        data-flag="1" style="animation-delay: 0.4s;"><img
+                            src="https://d28j15pnfa5oxx.cloudfront.net/visual/kabinetijen/img/arrow_fill.svg" alt="">
+                    </div>
+                </div>
+                <div class="kv_kabinet_history_outer">
+                    <div class="kv_kabinet_history"
+                        style="background-image:url('https://d28j15pnfa5oxx.cloudfront.net/visual/kabinetijen/img/soekarno_potrait.jpg');">
+                        <div class="kv_kabinet_history_p">Sukarno</div>
+                        <div class="kv_kabinet_history_t">
+                            <div class="kv_kabinet_history_t_p indepth_animate" id="num_3" data-id="num_3"
+                                data-animation="number-count" data-delay="0" data-offset="0" data-flag="1"
+                                data-count="26" data-count-final="26">26</div>
+                            <div class="kv_kabinet_history_t_p2 indepth_animate text-focus-in"
+                                data-animation="text-focus-in" data-delay="0.2" data-offset="100" data-flag="1"
+                                style="animation-delay: 0.2s;">KABINET</div>
+                        </div>
+                        <div class="kv_kabinet_history_d indepth_animate slide-in-left-s"
+                            data-animation="slide-in-left-s" data-delay="0.2" data-offset="100" data-flag="1"
+                            style="animation-delay: 0.2s;">1945 - 1966
+                        </div> &nbsp;
+                    </div>
+                </div>
+                <div class="kv_kabinet_history_outer" style="padding-top:100px;">
+                    <div class="kv_kabinet_history"
+                        style="background-image:url('https://d28j15pnfa5oxx.cloudfront.net/visual/kabinetijen/img/soeharto_potrait.jpg');">
+                        <div class="kv_kabinet_history_p">Soeharto</div>
+                        <div class="kv_kabinet_history_t">
+                            <div class="kv_kabinet_history_t_p indepth_animate" id="num_4" data-id="num_4"
+                                data-animation="number-count" data-delay="0" data-offset="0" data-flag="1"
+                                data-count="9" data-count-final="9">9</div>
+                            <div class="kv_kabinet_history_t_p2 indepth_animate text-focus-in"
+                                data-animation="text-focus-in" data-delay="0.2" data-offset="100" data-flag="1"
+                                style="animation-delay: 0.2s;">KABINET</div>
+                        </div>
+                        <div class="kv_kabinet_history_d indepth_animate slide-in-left-s"
+                            data-animation="slide-in-left-s" data-delay="0.2" data-offset="100" data-flag="1"
+                            style="animation-delay: 0.2s;">1967 - 1998
+                        </div> &nbsp;
+                    </div>
+                </div>
+                <div class="kv_kabinet_history_outer" style="margin-right:0px;padding-top:200px;">
+                    <div class="kv_kabinet_history"
+                        style="background-image:url('https://d28j15pnfa5oxx.cloudfront.net/visual/kabinetijen/img/habibie_potrait.jpg');">
+                        <div class="kv_kabinet_history_p">B.J. Habibie</div>
+                        <div class="kv_kabinet_history_t">
+                            <div class="kv_kabinet_history_t_p indepth_animate" id="num_5" data-id="num_5"
+                                data-animation="number-count" data-delay="0" data-offset="0" data-flag="1"
+                                data-count="1" data-count-final="1">1</div>
+                            <div class="kv_kabinet_history_t_p2 indepth_animate text-focus-in"
+                                data-animation="text-focus-in" data-delay="0.2" data-offset="100" data-flag="1"
+                                style="animation-delay: 0.2s;">KABINET</div>
+                        </div>
+                        <div class="kv_kabinet_history_d indepth_animate slide-in-left-s"
+                            data-animation="slide-in-left-s" data-delay="0.2" data-offset="100" data-flag="1"
+                            style="animation-delay: 0.2s;">1998 - 1999
+                        </div> &nbsp;
+                    </div>
+                </div>
+                <div class="kv_kabinet_history_outer">
+                    <div class="kv_kabinet_history"
+                        style="background-image:url('https://d28j15pnfa5oxx.cloudfront.net/visual/kabinetijen/img/gusdur_potrait.jpg');">
+                        <div class="kv_kabinet_history_p">Abdurrahman<br>Wahid</div>
+                        <div class="kv_kabinet_history_t">
+                            <div class="kv_kabinet_history_t_p indepth_animate" id="num_6" data-id="num_6"
+                                data-animation="number-count" data-delay="0" data-offset="0" data-flag="1"
+                                data-count="1" data-count-final="1">1</div>
+                            <div class="kv_kabinet_history_t_p2 indepth_animate text-focus-in"
+                                data-animation="text-focus-in" data-delay="0.2" data-offset="100" data-flag="1"
+                                style="animation-delay: 0.2s;">KABINET</div>
+                        </div>
+                        <div class="kv_kabinet_history_d indepth_animate slide-in-left-s"
+                            data-animation="slide-in-left-s" data-delay="0.2" data-offset="100" data-flag="1"
+                            style="animation-delay: 0.2s;">1999 - 2001
+                        </div> &nbsp;
+                    </div>
+                </div>
+                <div class="kv_kabinet_history_outer" style="padding-top:100px;">
+                    <div class="kv_kabinet_history"
+                        style="background-image:url('https://d28j15pnfa5oxx.cloudfront.net/visual/kabinetijen/img/megawati_potrait.jpg');">
+                        <div class="kv_kabinet_history_p">Megawati<br>Soekarnoputri</div>
+                        <div class="kv_kabinet_history_t">
+                            <div class="kv_kabinet_history_t_p indepth_animate" id="num_7" data-id="num_7"
+                                data-animation="number-count" data-delay="0" data-offset="0" data-flag="1"
+                                data-count="1" data-count-final="1">1</div>
+                            <div class="kv_kabinet_history_t_p2 indepth_animate text-focus-in"
+                                data-animation="text-focus-in" data-delay="0.2" data-offset="100" data-flag="1"
+                                style="animation-delay: 0.2s;">KABINET</div>
+                        </div>
+                        <div class="kv_kabinet_history_d indepth_animate slide-in-left-s"
+                            data-animation="slide-in-left-s" data-delay="0.2" data-offset="100" data-flag="1"
+                            style="animation-delay: 0.2s;">2001- 2004</div>
+                        &nbsp;
+                    </div>
+                </div>
+                <div class="kv_kabinet_history_outer" style="margin-right:0px;padding-top:200px;">
+                    <div class="kv_kabinet_history"
+                        style="background-image:url('https://d28j15pnfa5oxx.cloudfront.net/visual/kabinetijen/img/sby_potrait.jpg');">
+                        <div class="kv_kabinet_history_p">Susilo<br>Bambang<br>Yudhoyono</div>
+                        <div class="kv_kabinet_history_t">
+                            <div class="kv_kabinet_history_t_p indepth_animate" id="num_8" data-id="num_8"
+                                data-animation="number-count" data-delay="0" data-offset="0" data-flag="1"
+                                data-count="2" data-count-final="2">2</div>
+                            <div class="kv_kabinet_history_t_p2 indepth_animate text-focus-in"
+                                data-animation="text-focus-in" data-delay="0.2" data-offset="100" data-flag="1"
+                                style="animation-delay: 0.2s;">KABINET</div>
+                        </div>
+                        <div class="kv_kabinet_history_d indepth_animate slide-in-left-s"
+                            data-animation="slide-in-left-s" data-delay="0.2" data-offset="100" data-flag="1"
+                            style="animation-delay: 0.2s;">2004 - 2014
+                        </div> &nbsp;
+                    </div>
+                </div>
+                <div class="kv_kabinet_history_outer">
+                    <div class="kv_kabinet_history"
+                        style="background-image:url('https://d28j15pnfa5oxx.cloudfront.net/visual/kabinetijen/img/jokowi_potrait.jpg');">
+                        <div class="kv_kabinet_history_p">Joko<br>Widodo</div>
+                        <div class="kv_kabinet_history_t" style="top:80px;">
+                            <div class="kv_kabinet_history_t_p indepth_animate" id="num_9" data-id="num_9"
+                                data-animation="number-count" data-delay="0" data-offset="0" data-flag="1"
+                                data-count="1" data-count-final="1">1</div>
+                            <div class="kv_kabinet_history_t_p2 indepth_animate text-focus-in"
+                                data-animation="text-focus-in" data-delay="0.2" data-offset="100" data-flag="1"
+                                style="animation-delay: 0.2s;">KABINET</div>
+                        </div>
+                        <div class="kv_kabinet_history_d indepth_animate slide-in-left-s"
+                            data-animation="slide-in-left-s" data-delay="0.2" data-offset="100" data-flag="1"
+                            style="animation-delay: 0.2s;">2014 - Sekarang
+                        </div> &nbsp;
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="kv_container_outer_green">
+            <div class="kv_rotating_circle_s indepth_animate rotate-i" data-animation="rotate-i" data-delay="0"
+                data-offset="0" data-flag="1" style="right: -40px; left: unset; top: -400px; animation-delay: 0s;">
+                <img src="https://d28j15pnfa5oxx.cloudfront.net/visual/kabinetijen/img/circles_stroke.svg" alt="">
+            </div>
+            <div class="kv_content_text_green"> Setiap presiden Indonesia punya cara tersendiri dalam hal penyusunan
+                kabinetnya. Nama Kabinet Presiden Joko Widodo periode lalu serupa dengan nama Kabinet di Era Sukarno
+                pada
+                1959, yaitu bernama Kabinet Kerja I. Kabinet/Pemerintahan ini adalah cikal bakal dari sebuah
+                demokrasi
+                terpimpin ala Sukarno yang berlangsung sejak 1959 sampai 1965. Cara penyusunannya pun kala itu
+                berada dalam
+                situasi yang genting tepatnya 10 Juli 1959. Jabatan Perdana Menteri sendiri dipegang langsung oleh
+                Sukarno
+                yang juga seorang presiden. <br><br> Beda Presiden maka beda pula cara seleksi Calon
+                Menteri-Menterinya.
+            </div>
+            <div class="kv_star kv_star2" style="top:2130px;">
+                <div class="indepth_animate puff-in-center" data-animation="puff-in-center" data-delay="0.4"
+                    data-offset="0" data-flag="1" style="animation-delay: 0.4s;"><img
+                        src="https://d28j15pnfa5oxx.cloudfront.net/visual/kabinetijen/img/star_fill.svg" alt="">
+                </div>
+                <div class="indepth_animate puff-in-center" data-animation="puff-in-center" data-delay="0.3"
+                    data-offset="0" data-flag="1" style="animation-delay: 0.3s;"><img
+                        src="https://d28j15pnfa5oxx.cloudfront.net/visual/kabinetijen/img/star_fill.svg" alt="">
+                </div>
+                <div class="indepth_animate puff-in-center" data-animation="puff-in-center" data-delay="0.2"
+                    data-offset="0" data-flag="1" style="animation-delay: 0.2s;"><img
+                        src="https://d28j15pnfa5oxx.cloudfront.net/visual/kabinetijen/img/star_fill.svg" alt="">
+                </div>
+                <div class="indepth_animate puff-in-center" data-animation="puff-in-center" data-delay="0.1"
+                    data-offset="0" data-flag="1" style="animation-delay: 0.1s;"><img
+                        src="https://d28j15pnfa5oxx.cloudfront.net/visual/kabinetijen/img/star_stroke.svg" alt="">
+                </div>
+                <div class="indepth_animate puff-in-center" data-animation="puff-in-center" data-delay="0"
+                    data-offset="0" data-flag="1" style="animation-delay: 0s;"><img
+                        src="https://d28j15pnfa5oxx.cloudfront.net/visual/kabinetijen/img/star_stroke.svg" alt="">
+                </div>
+            </div>
+            <div class="kv_presiden_container" style="margin-top:60px!important;">
+                <div class="kv_arrow_red3" style="left:0px;top:0px;">
+                    <div class="indepth_animate fade-in-i" data-animation="fade-in-i" data-delay="0" data-offset="0"
+                        data-flag="1" style="animation-delay: 0s;"><img
+                            src="https://d28j15pnfa5oxx.cloudfront.net/visual/kabinetijen/img/arrow_fill.svg" alt="">
+                    </div>
+                    <div class="indepth_animate fade-in-i" data-animation="fade-in-i" data-delay="0.2" data-offset="20"
+                        data-flag="1" style="animation-delay: 0.2s;"><img
+                            src="https://d28j15pnfa5oxx.cloudfront.net/visual/kabinetijen/img/arrow_fill.svg" alt="">
+                    </div>
+                    <div class="indepth_animate fade-in-i" data-animation="fade-in-i" data-delay="0.4" data-offset="60"
+                        data-flag="1" style="animation-delay: 0.4s;"><img
+                            src="https://d28j15pnfa5oxx.cloudfront.net/visual/kabinetijen/img/arrow_fill.svg" alt="">
+                    </div>
+                </div>
+                <div class="kv_middle_line indepth_animate scale-in-ver-top" data-animation="scale-in-ver-top"
+                    data-delay="0" data-offset="-150" data-flag="1" style="animation-delay: 0s;">&nbsp;</div>
+                <div class="kv_presiden_history_circle">
+                    <div class="kv_presiden_history_circle_d indepth_animate slide-in-left"
+                        data-animation="slide-in-left" data-delay="0.3" data-offset="0" data-flag="1"
+                        style="animation-delay: 0.3s;"> 1945-<br>1966</div>
+                    <div class="kv_presiden_history_circle_inner indepth_animate scale-in-center"
+                        data-animation="scale-in-center" data-delay="0" data-offset="0" data-flag="1"
+                        style="animation-delay: 0s;"> <img
+                            src="https://d28j15pnfa5oxx.cloudfront.net/visual/kabinetijen/img/soekarno_square.jpg"
+                            alt="Kabinet Soekarno"></div>
+                </div>
+                <div class="kv_presiden_history_p">
+                    <div class="kv_presiden_history_p_span indepth_animate swing-in-top-fwd"
+                        data-animation="swing-in-top-fwd" data-delay="0" data-offset="0" data-flag="1"
+                        style="animation-delay: 0s;">Sukarno</div>
+                </div>
+                <div class="kv_presiden_history_right_outer" style="margin-top:50px;">
+                    <div class="kv_presiden_history_right indepth_animate scale-in-tl" data-animation="scale-in-tl"
+                        data-delay="0" data-offset="0" data-flag="1" style="animation-delay: 0s;"> Presiden Soekarno
+                        pernah
+                        memilih menteri buta huruf. Letkol Imam/Mochamad Sjafe’i atau dikenal Bang Pi’i atau Pi’i
+                        atau Pak
+                        Pi’i diangkat Presiden Sukarno menjadi Menteri Negara Diperbantukan Pada Presiden Khusus
+                        Urusan
+                        Pengamanan. Menteri Pi’i cuma seumur jagung. Pi’i ditangkap Soeharto karena dianggap PKI
+                        pada
+                        masanya.</div>
+                </div>
+                <div class="kv_presiden_history_left_outer">
+                    <div class="kv_presiden_history_left indepth_animate scale-in-tr" data-animation="scale-in-tr"
+                        data-delay="0" data-offset="0" data-flag="1" style="animation-delay: 0s;"> Rekor kabinet
+                        terbanyak
+                        dan berusia terpendek ada di masa Presiden Sukarno. Kabinet Dwikora II hanya berusia 32 hari
+                        (24
+                        Februari - 28 Maret 1966) dan berjumlah 132 orang setara menteri.</div>
+                </div>
+            </div>
+            <div class="kv_presiden_container">
+                <div class="kv_middle_line indepth_animate scale-in-ver-top" data-animation="scale-in-ver-top"
+                    data-delay="0" data-offset="-150" data-flag="1" style="animation-delay: 0s;">&nbsp;</div>
+                <div class="kv_presiden_history_circle" style="margin-top:50px;">
+                    <div class="kv_presiden_history_circle_d indepth_animate slide-in-left"
+                        data-animation="slide-in-left" data-delay="0.3" data-offset="0" data-flag="1"
+                        style="animation-delay: 0.3s;"> 1967-<br>1998</div>
+                    <div class="kv_presiden_history_circle_inner indepth_animate scale-in-center"
+                        data-animation="scale-in-center" data-delay="0" data-offset="0" data-flag="1"
+                        style="animation-delay: 0s;"> <img
+                            src="https://d28j15pnfa5oxx.cloudfront.net/visual/kabinetijen/img/soeharto_square.jpg"
+                            alt="Kabinet Soeharto"></div>
+                </div>
+                <div class="kv_presiden_history_p">
+                    <div class="kv_presiden_history_p_span indepth_animate swing-in-top-fwd"
+                        data-animation="swing-in-top-fwd" data-delay="0" data-offset="0" data-flag="1"
+                        style="animation-delay: 0s;">Soeharto</div>
+                </div>
+                <div class="kv_presiden_history_right_outer" style="margin-top:50px;">
+                    <div class="kv_presiden_history_right indepth_animate scale-in-tl" data-animation="scale-in-tl"
+                        data-delay="0" data-offset="0" data-flag="1" style="animation-delay: 0s;"> Presiden Soeharto
+                        tidak
+                        menerapkan banyak syarat untuk para calon menterinya, syarat utama dari Beliau adalah orang
+                        yang
+                        bisa dipercaya, mampu dan loyal (berasal dari Partai Golkar).</div>
+                </div>
+            </div>
+            <div class="kv_rotating_circle_s indepth_animate rotate-i" data-animation="rotate-i" data-delay="0"
+                data-offset="0" data-flag="1" style="top: 1000px; animation-delay: 0s;"> <img
+                    src="https://d28j15pnfa5oxx.cloudfront.net/visual/kabinetijen/img/circles_fill.svg" alt="">
+            </div>
+            <div class="kv_presiden_container">
+                <div class="kv_middle_line indepth_animate scale-in-ver-top" data-animation="scale-in-ver-top"
+                    data-delay="0" data-offset="-150" data-flag="1" style="animation-delay: 0s;">&nbsp;</div>
+                <div class="kv_presiden_history_circle" style="margin-top:50px;">
+                    <div class="kv_presiden_history_circle_d indepth_animate slide-in-left"
+                        data-animation="slide-in-left" data-delay="0.3" data-offset="0" data-flag="1"
+                        style="animation-delay: 0.3s;"> 1999-<br>2001</div>
+                    <div class="kv_presiden_history_circle_inner indepth_animate scale-in-center"
+                        data-animation="scale-in-center" data-delay="0" data-offset="0" data-flag="1"
+                        style="animation-delay: 0s;"> <img
+                            src="https://d28j15pnfa5oxx.cloudfront.net/visual/kabinetijen/img/gusdur_square.jpg"
+                            alt="Kabinet Gus Dur"></div>
+                </div>
+                <div class="kv_presiden_history_p">
+                    <div class="kv_presiden_history_p_span indepth_animate swing-in-top-fwd"
+                        data-animation="swing-in-top-fwd" data-delay="0" data-offset="0" data-flag="1"
+                        style="animation-delay: 0s;">ABDURRAHMAN WAHID</div>
+                </div>
+                <div class="kv_presiden_history_right_outer" style="margin-top:50px;">
+                    <div class="kv_presiden_history_right indepth_animate scale-in-tl" data-animation="scale-in-tl"
+                        data-delay="0" data-offset="0" data-flag="1" style="animation-delay: 0s;"> Presiden
+                        Abdurrahman
+                        Wahid tidak menggunakan hak prerogatifnya secara mutlak. Hanya empat menteri yang ditunjuk
+                        secara
+                        prerogatif mutlak, yaitu Menteri Luar Negeri, Menteri Agama, Menko Polkam dan Menko Ekuin
+                        (wawancara
+                        Kwik Kian Gie dengan Wartakota).</div>
+                </div>
+                <div class="kv_presiden_history_left_outer">
+                    <div class="kv_presiden_history_left indepth_animate scale-in-tr" data-animation="scale-in-tr"
+                        data-delay="0" data-offset="0" data-flag="1" style="animation-delay: 0s;"> Hanya ada dua
+                        syarat
+                        utama untuk menjadi pembantu Presiden Gus Dur yaitu keberpihakan dan integritas.</div>
+                </div>
+                <div class="kv_presiden_history_right_outer">
+                    <div class="kv_presiden_history_right indepth_animate scale-in-tl" data-animation="scale-in-tl"
+                        data-delay="0" data-offset="0" data-flag="1" style="animation-delay: 0s;"> Pemilihan menteri
+                        pada
+                        era Presiden Gus Dur dianggap paling ideal karena tidak ada menteri yang korupsi pada saat
+                        itu.
+                    </div>
+                </div>
+            </div>
+            <div class="kv_presiden_container">
+                <div class="kv_middle_line indepth_animate scale-in-ver-top" data-animation="scale-in-ver-top"
+                    data-delay="0" data-offset="-150" data-flag="1" style="animation-delay: 0s;">&nbsp;</div>
+                <div class="kv_presiden_history_circle" style="margin-top:50px;">
+                    <div class="kv_presiden_history_circle_d indepth_animate slide-in-left"
+                        data-animation="slide-in-left" data-delay="0.3" data-offset="0" data-flag="1"
+                        style="animation-delay: 0.3s;"> 2004-<br>2014</div>
+                    <div class="kv_presiden_history_circle_inner indepth_animate scale-in-center"
+                        data-animation="scale-in-center" data-delay="0" data-offset="0" data-flag="1"
+                        style="animation-delay: 0s;"> <img
+                            src="https://d28j15pnfa5oxx.cloudfront.net/visual/kabinetijen/img/sby_square.jpg"
+                            alt="Kabinet SBY"></div>
+                </div>
+                <div class="kv_presiden_history_p">
+                    <div class="kv_presiden_history_p_span indepth_animate swing-in-top-fwd"
+                        data-animation="swing-in-top-fwd" data-delay="0" data-offset="0" data-flag="1"
+                        style="animation-delay: 0s;">SUSILO BAMBANG YUDHOYONO</div>
+                </div>
+                <div class="kv_presiden_history_right_outer" style="margin-top:50px;">
+                    <div class="kv_presiden_history_right indepth_animate scale-in-tl" data-animation="scale-in-tl"
+                        data-delay="0" data-offset="0" data-flag="1" style="animation-delay: 0s;"> Pada masa
+                        Presiden SBY,
+                        proses penyaringan menteri relatif transparan dan rapi.</div>
+                </div>
+                <div class="kv_presiden_history_left_outer">
+                    <div class="kv_presiden_history_left indepth_animate scale-in-tr" data-animation="scale-in-tr"
+                        data-delay="0" data-offset="0" data-flag="1" style="animation-delay: 0s;"> SBY menerima
+                        setiap
+                        usulan kemudian disaring oleh Badan Pemenangan Pemilu SBY.</div>
+                </div>
+                <div class="kv_presiden_history_right_outer">
+                    <div class="kv_presiden_history_right indepth_animate scale-in-tl" data-animation="scale-in-tl"
+                        data-delay="0" data-offset="0" data-flag="1" style="animation-delay: 0s;"> Setiap calon yang
+                        diterima akan diumumkan melalui televisi kemudian dipanggil untuk wawancara atau diskusi.
+                        Calon
+                        menteri belum tentu lulus walau sudah diumumkan di televisi dan melalui serangkaian tes
+                        kesehatannya.</div>
+                </div>
+                <div class="kv_presiden_history_left_outer">
+                    <div class="kv_presiden_history_left indepth_animate scale-in-tr" data-animation="scale-in-tr"
+                        data-delay="0" data-offset="0" data-flag="1" style="animation-delay: 0s;"> Calon menteri
+                        yang lolos
+                        akan disodori tanda tangan komitmen koalisi, kontrak kerja dan pakta integritas.</div>
+                </div>
+            </div>
+            <div class="kv_presiden_container" style="padding-bottom:0px;">
+                <div class="kv_arrow_red3" style="left:0px;top:0px;">
+                    <div class="indepth_animate fade-in-i" data-animation="fade-in-i" data-delay="0" data-offset="0"
+                        data-flag="1" style="animation-delay: 0s;"><img
+                            src="https://d28j15pnfa5oxx.cloudfront.net/visual/kabinetijen/img/arrow_fill.svg" alt="">
+                    </div>
+                    <div class="indepth_animate fade-in-i" data-animation="fade-in-i" data-delay="0.2" data-offset="20"
+                        data-flag="1" style="animation-delay: 0.2s;"><img
+                            src="https://d28j15pnfa5oxx.cloudfront.net/visual/kabinetijen/img/arrow_fill.svg" alt="">
+                    </div>
+                    <div class="indepth_animate fade-in-i" data-animation="fade-in-i" data-delay="0.4" data-offset="60"
+                        data-flag="1" style="animation-delay: 0.4s;"><img
+                            src="https://d28j15pnfa5oxx.cloudfront.net/visual/kabinetijen/img/arrow_fill.svg" alt="">
+                    </div>
+                </div>
+                <div class="kv_middle_line indepth_animate scale-in-ver-top" data-animation="scale-in-ver-top"
+                    data-delay="0" data-offset="-150" data-flag="1" style="animation-delay: 0s;">&nbsp;</div>
+                <div class="kv_presiden_history_circle" style="margin-top:50px;">
+                    <div class="kv_presiden_history_circle_d indepth_animate slide-in-left"
+                        data-animation="slide-in-left" data-delay="0.3" data-offset="0" data-flag="1"
+                        style="animation-delay: 0.3s;">
+                        2014-<br><span>SEKARANG</span></div>
+                    <div class="kv_presiden_history_circle_inner indepth_animate scale-in-center"
+                        data-animation="scale-in-center" data-delay="0" data-offset="0" data-flag="1"
+                        style="animation-delay: 0s;"> <img
+                            src="https://d28j15pnfa5oxx.cloudfront.net/visual/kabinetijen/img/jokowi_square.jpg"
+                            alt="Kabinet Jokowi"></div>
+                </div>
+                <div class="kv_presiden_history_p">
+                    <div class="kv_presiden_history_p_span indepth_animate swing-in-top-fwd"
+                        data-animation="swing-in-top-fwd" data-delay="0" data-offset="0" data-flag="1"
+                        style="animation-delay: 0s;">JOKO WIDODO</div>
+                </div>
+                <div class="kv_presiden_history_right_outer" style="margin-top:50px;">
+                    <div class="kv_presiden_history_right indepth_animate scale-in-tl" data-animation="scale-in-tl"
+                        data-delay="0" data-offset="0" data-flag="1" style="animation-delay: 0s;"> Seleksi Menteri
+                        pemerintahan Joko Widodo relatif tertutup dibandingkan masa pemerintahan SBY.</div>
+                </div>
+                <div class="kv_presiden_history_left_outer">
+                    <div style="margin-bottom: 0px !important; animation-delay: 0s;"
+                        class="kv_presiden_history_left indepth_animate scale-in-tr" data-animation="scale-in-tr"
+                        data-delay="0" data-offset="0" data-flag="1"> Kabinet Kerja I Joko Widodo memegang rekor
+                        sebagai
+                        Kabinet dengan menteri perempuan terbanyak sepanjang sejarah Indonesia, tercatat ada
+                        sembilan
+                        menteri perempuan.</div>
+                </div>
+            </div>
+        </div>
+        <div class="kv_container_outer_black">
+            <div class="kv_rotating_circle_s indepth_animate rotate-i" data-animation="rotate-i" data-delay="0"
+                data-offset="0" data-flag="1" style="right: -40px; left: unset; animation-delay: 0s;"> <img
+                    src="https://d28j15pnfa5oxx.cloudfront.net/visual/kabinetijen/img/circles_stroke.svg" alt="">
+            </div>
+            <div class="kv_section_title_container">
+                <div style="color:#fff;">FAKTA SEPUTAR</div>
+                <div style="color:#DF1F26;">HAK PREROGATIF</div>
+                <div style="color:#DF1F26;">PRESIDEN</div>
+            </div>
+            <div class="kv_content_text_black"> Jokowi yang sedikit menyangkal dan tidak mau urusan penyusunan
+                kabinetnya
+                ‘diganggu’ oleh masyarakat. Tapi apa benar, masyarakat gak boleh kasih usulan dalam hal penyusunan
+                kabinet?
+                <br><br> Pada kenyataannya Presiden tidak 100 persen memiliki Hak Prerogatif. Menurut UU Kementerian
+                Negara,
+                pasal 19 ayat 1, bilang bahwa Presiden diharuskan meminta pertimbangan DPR RI terkait perubahan atau
+                pembubaran Kementerian. Walau Undang-Undang ini hanya terbatas pada pertimbangan DPR namun bisa juga
+                berubah
+                haluan menjadi politis. <br><br> Sebagai bangsa yang berdemokrasi, Kita punya hak untuk memberikan
+                ide dan
+                usulan, termasuk soal penyusunan kabinet Joko Widodo. <b style="color:#fff;">KABINETIJEN</b>
+                dilahirkan
+                untuk memfasilitasi keinginan netizen dalam memberi usulan susunan Kabinet. Netizen bisa memilih dan
+                menyusun tim impian kabinet sendiri.</div>
+        </div>
+        <div class="kv_container_outer_white">
+            <div class="kv_arrow_red2">
+                <div class="indepth_animate fade-in-i-0" data-animation="fade-in-i" data-delay="0" data-offset="0"
+                    data-flag="0"><img src="https://d28j15pnfa5oxx.cloudfront.net/visual/kabinetijen/img/arrow_fill.svg"
+                        alt="">
+                </div>
+                <div class="indepth_animate fade-in-i-0" data-animation="fade-in-i" data-delay="0.2" data-offset="20"
+                    data-flag="0"><img src="https://d28j15pnfa5oxx.cloudfront.net/visual/kabinetijen/img/arrow_fill.svg"
+                        alt="">
+                </div>
+                <div class="indepth_animate fade-in-i-0" data-animation="fade-in-i" data-delay="0.4" data-offset="60"
+                    data-flag="0"><img src="https://d28j15pnfa5oxx.cloudfront.net/visual/kabinetijen/img/arrow_fill.svg"
+                        alt="">
+                </div>
+            </div>
+            <div class="kv_section_title_container">
+                <div style="color:#00BAA3;">GAME KABINETIJEN</div>
+                <div style="color:#DF1F26;">BUKTI ANAK MUDA</div>
+                <div style="color:#DF1F26;">GAK CUEK SAMA POLITIK</div>
+            </div>
+            <div class="kv_content_text_white"> Ada alasan sendiri kenapa anak muda harus melek sama politik.
+                Menurut
+                politikus muda Dito Ariotedjo, anak muda masuk ke dalam politik itu penting. Sebab saat anak muda
+                atau
+                siapapun ingin mengubah kebijakan, maka bisa mewujudkannya lewat jalur politik. “Anak muda
+                sebenarnya tidak
+                apatis pada politik,” jelasnya. <br><br>
+                <div class="kv_quote_container">
+                    <div class="kv_quote indepth_animate" data-animation="draw-border2" data-delay="0" data-offset="0"
+                        data-flag="0">
+                        <div style="display:inline-block;" id="quote_2"
+                            class="kv_quote_span kv_quote_show indepth_animate op_0" data-id="quote_2"
+                            data-animation="random-fade-text" data-delay="0" data-offset="0" data-flag="0">ANAK MUDA
+                            SEBENARNYA TIDAK APATIS DENGAN POLITIK.</div>
+                        <div class="kv_quote_by indepth_animate text-focus-in-0" data-animation="text-focus-in"
+                            data-delay="0.5" data-offset="100" data-flag="0"> <i>DITO ARIOTEDJO</i></div>
+                    </div>
+                    <div class="kv_quote_img"> <img
+                            src="https://d28j15pnfa5oxx.cloudfront.net/visual/kabinetijen/img/dito.jpg"
+                            alt="Dito Ariotedjo"></div>
+                </div> <br><br> Dalam sebuah survei yang dilakukan oleh Lembaga Survei Indonesia (LSI) pada tahun
+                2012,
+                didapati bahwa 79% anak muda di Indonesia tidak tertarik berpolitik. Tapi fakta yang Opini.id
+                dapatkan lewat
+                game KABINETIJEN justru berbeda. Ternyata banyak anak muda yang tertarik berpolitik, buktinya sampai
+                saat
+                ini sudah terbentuk 6.646 kabinet versi netizen. Opini.id sebagai platform yang digemari anak muda
+                menjadi
+                bukti kalau masih banyak anak muda yang peduli terhadap masa depan Negara. <br><br>
+                <div class="kv_container_center">
+                    <div id="num_2" data-id="num_2" class="kv_number_middle indepth_animate"
+                        data-animation="number-count" data-delay="0" data-offset="0" data-flag="0" data-count="6646"
+                        data-count-final="6.646">0</div>
+                    <div class="kv_number_middle_text indepth_animate text-focus-in-0" data-animation="text-focus-in"
+                        data-delay="0.2" data-offset="100" data-flag="0">KABINET
+                        VERSI NETIZEN</div>
+                </div>
+            </div>
+        </div>
+        <div class="kv_container_outer_black kv_login_false">
+            <div class="kv_arrow_red">
+                <div class="indepth_animate fade-in-i-0" data-animation="fade-in-i" data-delay="0" data-offset="20"
+                    data-flag="0"><img src="https://d28j15pnfa5oxx.cloudfront.net/visual/kabinetijen/img/arrow_fill.svg"
+                        alt="">
+                </div>
+                <div class="indepth_animate fade-in-i-0" data-animation="fade-in-i" data-delay="0.2" data-offset="40"
+                    data-flag="0"><img src="https://d28j15pnfa5oxx.cloudfront.net/visual/kabinetijen/img/arrow_fill.svg"
+                        alt="">
+                </div>
+                <div class="indepth_animate fade-in-i-0" data-animation="fade-in-i" data-delay="0.4" data-offset="60"
+                    data-flag="0"><img src="https://d28j15pnfa5oxx.cloudfront.net/visual/kabinetijen/img/arrow_fill.svg"
+                        alt="">
+                </div>
+            </div>
+            <div class="kv_rotating_circle_s indepth_animate rotate-i-0" data-animation="rotate-i" data-delay="0"
+                data-offset="0" data-flag="0" style="right:-40px;left:unset;"> <img
+                    src="https://d28j15pnfa5oxx.cloudfront.net/visual/kabinetijen/img/circles_stroke.svg" alt="">
+            </div>
+            <div class="kv_container_center">
+                <div class="kv_section_title_container">
+                    <div style="color:#fff;">MAU LIHAT</div>
+                    <div style="color:#00BAA3;">MENTERI-MENTERI FAVORIT</div>
+                    <div style="color:#DF1F26;">DI KABINETIJEN&nbsp;<div class="rotate-vert-center"
+                            style="display:inline-block;">?</div>
+                    </div>
+                </div>
+                <div class="kv_button kv_lightshow" onclick="showPopupSignIn();"> Lihat Sekarang</div>
+                <div class="kv_content_text_black" style="text-align:center;color:#fff;margin-top:20px;"> Untuk
+                    melihat
+                    artikel ini dengan lengkap, kamu harus melakukan registrasi dan/atau login ke website Opini.id
+                    terlebih
+                    dahulu.</div>
+            </div>
+        </div>
+    </div>
+    <!-- End Visual Kabinetijen -->
+</body>
+
+<!-- Start Sources Visual Kabinetijen -->
+<script src="https://articlephoto.s3-ap-southeast-1.amazonaws.com/visual/kabinetijen/js/jquery_341.js"></script>
+<script src="https://articlephoto.s3-ap-southeast-1.amazonaws.com/visual/kabinetijen/js/piechart.js"></script>
+<script src="https://articlephoto.s3-ap-southeast-1.amazonaws.com/visual/kabinetijen/js/animator.js"></script>
+<script src="https://articlephoto.s3-ap-southeast-1.amazonaws.com/visual/kabinetijen/js/scroll_load.js"></script>
+<script>$(document).ready(function () { $.noConflict(); kv_check_login(); lazyload(); $('.btn-guest').remove(); });</script>
+<script>
+    function kv_check_login() {
+        if (checkIsUserLogin()) {
+            $('.kv_login_true').show();
+            $('.kv_login_false').remove();
+        } else {
+            $('.kv_login_true').remove();
+            $('.kv_login_false').show();
+        }
+    }
+</script>
+<!-- End Sources Visual Kabinetijen -->
+
+<script src="tinymce/tinymce.min.js"></script>
+<script src="tinymce/jquery.tinymce.min.js"></script>
+<script src="src/inlineEditor.js"></script>
+
+</html>
