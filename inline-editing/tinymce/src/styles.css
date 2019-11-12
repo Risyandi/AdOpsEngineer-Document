@@ -1,3 +1,7 @@
+#text__editor {
+    z-index: 1600 !important;
+}
+
 .wrapper-tinymce {
     display: block;
     position: relative;
