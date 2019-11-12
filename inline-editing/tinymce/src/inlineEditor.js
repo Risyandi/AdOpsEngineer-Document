@@ -1,56 +1,45 @@
-var emailHeaderConfig = {
-    selector: '.tinymce-heading',
-    /** extra plugins tinycloud */
-    // external_plugins: {
-    //     'powerpaste': 'http://www.server.com/application/external_plugins/powerpaste/plugin.js'
-    // },
+var inlineEditor = {
+    selector: '.text__editor',
     menubar: false,
     inline: true,
-    plugins: [
-        'lists',
-        'autolink'
-    ],
-    toolbar: 'undo redo | bold italic underline',
-    valid_elements: 'strong,em,span[style],a[href]',
-    valid_styles: {
-        '*': 'font-size,font-family,color,text-decoration,text-align'
-    },
-    /** extra plugins tinycloud */
-    // paste_word_import: 'clean',
-    // paste_html_import: 'clean',
-    content_css: [
-        'https://fonts.googleapis.com/css?family=Lato:300,300i,400,400i'
-    ]
+    fixed_toolbar_container: "#text__editor",
+    toolbar: "undo redo | bold italic | styleselect",
+    schema: "html5",
+    setup: function (editor) {
+        editor.on('blur', function (e) {
+            return false
+        });
+    }
 };
 
-var emailBodyConfig = {
-    selector: '.tinymce-body',
-    /** extra plugins tinycloud */
-    // external_plugins: {
-    //     'powerpaste': 'http://www.server.com/application/external_plugins/powerpaste/plugin.js'
-    // },
-    menubar: false,
-    inline: true,
-    plugins: [
-        'link',
-        'lists',
-        'autolink',
-    ],
-    toolbar: [
-        'undo redo | bold italic underline | fontselect fontsizeselect',
-        'forecolor backcolor | alignleft aligncenter alignright alignfull | numlist bullist outdent indent'
-    ],
-    valid_elements: 'p[style],strong,em,span[style],a[href],ul,ol,li',
-    valid_styles: {
-        '*': 'font-size,font-family,color,text-decoration,text-align'
-    },
-    /** extra plugins tinycloud */
-    // powerpaste_word_import: 'clean',
-    // powerpaste_html_import: 'clean',
-    content_css: [
-        'https://fonts.googleapis.com/css?fonts.googleapis.com/css?family=Lato:300,300i,400,400i'
-    ]
-};
+tinymce.init(inlineEditor);
 
-tinymce.init(emailHeaderConfig);
-tinymce.init(emailBodyConfig);
+/**
+* === Technical Notes ===
+* init config use external plugin, in this example use external plugin powerpaste
+* { external_plugins: {
+    'powerpaste': 'http://www.server.com/application/external_plugins/powerpaste/plugin.js'
+    },
+*  powerpaste_word_import: 'clean',
+   powerpaste_html_import: 'clean',
+* }
+*/
+
+/*
+* === Technical Notes ===
+* tinymce.init({
+*    selector: ".editable",
+*    inline: true,
+*    fixed_toolbar_container: "#mytoolbar",
+*    schema: "html5",
+*    toolbar: "undo redo | bold italic | styleselect",
+*    menubar: false,
+*    setup: function (editor) {
+*        editor.on('blur', function (e) {
+*            return false
+*        });
+*    }
+* });
+* <div id="mytoolbar" class="height:100px;"></div>
+* <div class="editable" style="background-color: #bbb;">Some very simple text editing here.</div>
+*/
