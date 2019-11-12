@@ -100,7 +100,7 @@
     <!-- end example tinyMCE -->
 
     <!-- Start Visual Kabinetijen -->
-    <div id="kv_outer_container" contenteditable="true">
+    <div id="kv_outer_container" class="kv_outer_container" contenteditable="true">
         <input type="hidden" id="kv_is_login" value="true">
         <div class="kv_container_outer_black">
             <div class="kv_arrow_green">
@@ -202,19 +202,19 @@
                 </div>
             </div>
             <div class="kv_content_text_white">
-                <div class="kv_label">
+                <div class="kv_label text__editor" id="text__editor">
                     <div class="kv_label_span indepth_animate swing-in-top-fwd" data-animation="swing-in-top-fwd"
                         data-delay="0" data-offset="0" data-flag="1" style="animation-delay: 0s;">Sebelum dilantik
                         pada 20
                         Oktober 2019 mendatang,</div>
                 </div>
-                <div class="kv_label">
+                <div class="kv_label text__editor" id="text__editor">
                     <div class="kv_label_span indepth_animate swing-in-top-fwd" data-animation="swing-in-top-fwd"
                         data-delay="0.2" data-offset="0" data-flag="1" style="animation-delay: 0.2s;">banyak orang
                         yang
                         mempertanyakan seputar</div>
                 </div>
-                <div class="kv_label">
+                <div class="kv_label text__editor" id="text__editor">
                     <div class="kv_label_span indepth_animate swing-in-top-fwd" data-animation="swing-in-top-fwd"
                         data-delay="0.4" data-offset="0" data-flag="1" style="animation-delay: 0.4s;">susunan
                         kabinet Joko
@@ -767,18 +767,7 @@
 <script src="https://articlephoto.s3-ap-southeast-1.amazonaws.com/visual/kabinetijen/js/piechart.js"></script>
 <script src="https://articlephoto.s3-ap-southeast-1.amazonaws.com/visual/kabinetijen/js/animator.js"></script>
 <script src="https://articlephoto.s3-ap-southeast-1.amazonaws.com/visual/kabinetijen/js/scroll_load.js"></script>
-<script>$(document).ready(function () { $.noConflict(); kv_check_login(); lazyload(); $('.btn-guest').remove(); });</script>
-<script>
-    function kv_check_login() {
-        if (checkIsUserLogin()) {
-            $('.kv_login_true').show();
-            $('.kv_login_false').remove();
-        } else {
-            $('.kv_login_true').remove();
-            $('.kv_login_false').show();
-        }
-    }
-</script>
+<script>$(document).ready(function () {lazyload(); $('.btn-guest').remove(); });</script>
 <!-- End Sources Visual Kabinetijen -->
 
 <script src="tinymce/tinymce.min.js"></script>
