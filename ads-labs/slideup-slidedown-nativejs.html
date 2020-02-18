@@ -6,17 +6,16 @@
 
   <style>
     #slider {
-    margin:0px auto;
-    padding:0px;
-    width:400px;
-    border:1px solid #000;
-    background:#0f0;   
-  height:20px;
-  overflow:hidden;
-  }
-</style>
+      margin: 0px auto;
+      padding: 0px;
+      width: 400px;
+      border: 1px solid #000;
+      background: #0f0;
+      height: 20px;
+      overflow: hidden;
+    }
+  </style>
   <script>
-
     var minheight = 90;
     var maxheight = 100;
     var time = 10;
@@ -40,25 +39,26 @@
             var pos = Math.floor(disp * instance / time);
             result = instanceheight + pos;
             slider.style.height = result + 'px';
-            document.getElementById('log').innerHTML = 'Current Height : <b>' + result + '</b><br /> Current Time : <b>' + instance + '</b>';
+            document.getElementById('log').innerHTML = 'Current Height : <b>' + result +
+              '</b><br /> Current Time : <b>' + instance + '</b>';
           } else {
             slider.style.height = height + 'px'; //safety side ^^
             clearInterval(timer);
             controler.value = toggled ? ' Slide Up ' : ' Slide Down ';
-            document.getElementById('log').innerHTML = 'Current Height : <b>' + height + '</b><br /> Current Time : <b>' + time + '</b>';
+            document.getElementById('log').innerHTML = 'Current Height : <b>' + height +
+              '</b><br /> Current Time : <b>' + time + '</b>';
           }
         }, 1);
       };
     };
 
 
-// cek looping using map
-// const data = [1,2,3,4,5,6,7,8,9,10];
-// const square = x => Math.pow(x, 2);
-// const squares = data.map(square);
-// console.log(`Original data: ${data}`);
-// console.log(`Squared data: ${squares}`);
-
+    // cek looping using map
+    // const data = [1,2,3,4,5,6,7,8,9,10];
+    // const square = x => Math.pow(x, 2);
+    // const squares = data.map(square);
+    // console.log(`Original data: ${data}`);
+    // console.log(`Squared data: ${squares}`);
   </script>
 </head>
 

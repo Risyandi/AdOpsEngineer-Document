@@ -89,17 +89,17 @@
 
     <script>
         function getTimeRemaining(endtime) {
-                console.log(endtime, ":endTime value");
+            console.log(endtime, ":endTime value");
             var t = Date.parse(endtime) - Date.parse(new Date());
-                console.log(t, ":t value");
+            console.log(t, ":t value");
             var seconds = Math.floor((t / 1000) % 60);
-                console.log(seconds, ":second value");
+            console.log(seconds, ":second value");
             var minutes = Math.floor((t / 1000 / 60) % 60);
-                console.log(minutes, ":minutes value");
+            console.log(minutes, ":minutes value");
             var hours = Math.floor((t / (1000 * 60 * 60)) % 24);
-                console.log(hours, ":hours value");
+            console.log(hours, ":hours value");
             var days = Math.floor(t / (1000 * 60 * 60 * 24));
-                console.log(days, ":days value");
+            console.log(days, ":days value");
             return {
                 'total': t,
                 'days': days,

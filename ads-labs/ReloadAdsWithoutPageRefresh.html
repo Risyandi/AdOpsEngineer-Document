@@ -7,7 +7,11 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
 
-    <script>var googletag = window.googletag || { cmd: [] };</script>
+    <script>
+        var googletag = window.googletag || {
+            cmd: []
+        };
+    </script>
     <script async src="//www.googletagservices.com/tag/js/gpt.js"></script>
     <script>
         googletag.cmd.push(function () {
@@ -16,8 +20,8 @@
             // This slot is allowed to refresh, as it contains the targeting keys which have
             // been declared for refresh.
             googletag.defineSlot('1234/sports', [300, 600], 'div-1').
-                setTargeting(REFRESH_KEY, REFRESH_VALUE).
-                addService(googletag.pubads());
+            setTargeting(REFRESH_KEY, REFRESH_VALUE).
+            addService(googletag.pubads());
             // Number of seconds to wait after the slot becomes viewable.
             var SECONDS_TO_WAIT_AFTER_VIEWABILITY = 60;
 
@@ -39,7 +43,9 @@
 <body>
     <div id="div-1">
         <script>
-            googletag.cmd.push(function () { googletag.display('div-1'); });
+            googletag.cmd.push(function () {
+                googletag.display('div-1');
+            });
         </script>
     </div>
 </body>
