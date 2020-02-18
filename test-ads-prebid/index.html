@@ -80,10 +80,10 @@
 <script>
     window.impactifyTag = window.impactifyTag || [];
     impactifyTag.push({
-        appId: 'womantalk.com'
-        , format: 'screen'
-        , style: 'static'
-        , container: '#div-outstream-wrapper'
+        appId: 'womantalk.com',
+        format: 'screen',
+        style: 'static',
+        container: '#div-outstream-wrapper'
     });
     (function (d, s, id) {
         console.log(d, ":value d"); // element
@@ -92,7 +92,8 @@
 
         var js, ijs = d.getElementsByTagName(s)[0];
         if (d.getElementById(id)) return;
-        js = d.createElement(s); js.id = id;
+        js = d.createElement(s);
+        js.id = id;
         console.log(js, ":value js");
         console.log(ijs, ":value ijs");
         js.src = 'https://ad.impactify.io/static/ad/tag.js';
